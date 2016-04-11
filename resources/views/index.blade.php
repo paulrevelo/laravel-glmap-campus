@@ -1,4 +1,10 @@
-@extends('layouts.app-index')
+@extends('layouts.app')
+
+@section('css-glmap')
+  <link href="{{ asset('/css/map-styles.css') }}"rel="stylesheet" type="text/css" />
+
+  <link rel='stylesheet prefetch' href='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.css'>
+@endsection
 
 @section('contentheader_title')
 	Index
@@ -33,4 +39,14 @@
   </div>
 
   <div id="map-canvas" class="box box-solid"></div>
+@endsection
+
+@section('scripts-glmap')
+  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.js'></script>
+
+  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/OSMBuildings/OSMBuildings-GLMap.js'></script>
+      
+  <script src="https://cdn.rawgit.com/tweenjs/tween.js/master/src/Tween.js"></script>
+
+  <script src="{{ asset('/js/index2.js') }}" type="text/javascript"></script>
 @endsection

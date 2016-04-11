@@ -9,6 +9,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->yieldSection(); ?>
 
+<?php echo $__env->yieldContent('css-glmap'); ?>
+
+<?php echo $__env->yieldContent('css-map-editor'); ?>
+
 <!--
 BODY TAG OPTIONS:
 =================
@@ -57,6 +61,12 @@ desired effect
 <?php $__env->startSection('scripts'); ?>
     <?php echo $__env->make('layouts.partials.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->yieldSection(); ?>
+
+<?php echo $__env->yieldContent('scripts-glmap'); ?>
+
+<?php echo $__env->yieldContent('scripts-map-editor'); ?>
+
+<?php echo $__env->yieldContent('scripts-events'); ?>
 
 </body>
 </html>

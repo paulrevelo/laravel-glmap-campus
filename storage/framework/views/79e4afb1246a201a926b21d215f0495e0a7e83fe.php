@@ -1,3 +1,9 @@
+<?php $__env->startSection('css-glmap'); ?>
+  <link href="<?php echo e(asset('/css/map-styles.css')); ?>"rel="stylesheet" type="text/css" />
+
+  <link rel='stylesheet prefetch' href='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.css'>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('contentheader_title'); ?>
 	Index
 <?php $__env->stopSection(); ?>
@@ -32,4 +38,14 @@
 
   <div id="map-canvas" class="box box-solid"></div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app-index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->startSection('scripts-glmap'); ?>
+  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.js'></script>
+
+  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/OSMBuildings/OSMBuildings-GLMap.js'></script>
+      
+  <script src="https://cdn.rawgit.com/tweenjs/tween.js/master/src/Tween.js"></script>
+
+  <script src="<?php echo e(asset('/js/index2.js')); ?>" type="text/javascript"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
