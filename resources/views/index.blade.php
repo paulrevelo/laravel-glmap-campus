@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-index')
 
 @section('contentheader_title')
 	Index
@@ -34,7 +34,3 @@
 
   <div id="map-canvas" class="box box-solid"></div>
 @endsection
-
-@section('scripts-glmap')
-    @include('layouts.partials.scripts-glmap')
-@show

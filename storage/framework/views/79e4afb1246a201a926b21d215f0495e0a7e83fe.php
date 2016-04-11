@@ -32,8 +32,4 @@
 
   <div id="map-canvas" class="box box-solid"></div>
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('scripts-glmap'); ?>
-    <?php echo $__env->make('layouts.partials.scripts-glmap', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->yieldSection(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app-index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
