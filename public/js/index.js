@@ -48,7 +48,7 @@ osmb.addMapTiles(
 };
 
 // GEOJSON DATA
-osmb.addGeoJSON('http://localhost/bootstrap-visual-room-mapping/dist/json/polygons.json');
+osmb.addGeoJSONTiles('http://localhost:8000/interactive-map/public/json/polygons.json');
 
 // button handling
 var currentPoint = 'default';

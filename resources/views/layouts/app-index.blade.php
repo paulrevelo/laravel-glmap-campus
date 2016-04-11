@@ -54,6 +54,10 @@ desired effect
 
 </div><!-- ./wrapper -->
 
+@section('scripts')
+    @include('layouts.partials.scripts')
+@show
+
 @section('scripts-glmap')
     @include('layouts.partials.scripts-glmap')
 @show
