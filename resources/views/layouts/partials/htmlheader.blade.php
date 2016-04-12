@@ -20,8 +20,6 @@
     -->
     <link href="{{ asset('/css/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
-    <!-- style -->
-    <link href="{{ asset('/css/skins/styles.css') }}" rel="stylesheet" type="text/css" />   
+    <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />  
     
 </head>

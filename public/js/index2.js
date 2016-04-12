@@ -1612,7 +1612,7 @@ osmb.addMapTiles(
 };
 
 // GEOJSON DATA
-osmb.addGeoJSON(geojson);
+osmb.addGeoJSON('{{ asset("/json/polygons.json") }}');
 
 // button handling
 var currentPoint = 'default';
@@ -1681,6 +1681,7 @@ map.on('pointerdown', function(e){
  var id = osmb.getTarget(e.x-63, e.y-63);
 
   if (id) {
+    $('#myModal').modal('show');
     //window.alert(Building ID:  + id);
     //window.location.href = http://localhost/bootstrap-visual-room-mapping/index-glmap.php& + id;
   } else {

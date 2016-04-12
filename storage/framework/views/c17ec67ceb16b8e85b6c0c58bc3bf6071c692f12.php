@@ -20,8 +20,6 @@
     -->
     <link href="<?php echo e(asset('/css/skins/_all-skins.min.css')); ?>" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="<?php echo e(asset('/plugins/iCheck/square/blue.css')); ?>" rel="stylesheet" type="text/css" />
-    <!-- style -->
-    <link href="<?php echo e(asset('/css/skins/styles.css')); ?>" rel="stylesheet" type="text/css" />   
+    <link href="<?php echo e(asset('/plugins/iCheck/square/blue.css')); ?>" rel="stylesheet" type="text/css" />  
     
 </head>

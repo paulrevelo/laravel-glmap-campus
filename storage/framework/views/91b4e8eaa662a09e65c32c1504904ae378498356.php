@@ -62,9 +62,9 @@
             </li>
 
             <li>
-              <a href="<?php echo e(url('settings')); ?>">
-                <i class="fa fa-gears fa-fw"></i> 
-                <span>Settings</span>
+              <a href="<?php echo e(url('logout')); ?>">
+                <i class="fa fa-sign-out fa-fw"></i> 
+                <span>Logout</span>
               </a>
             </li>
 

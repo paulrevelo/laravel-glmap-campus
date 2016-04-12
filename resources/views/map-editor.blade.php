@@ -20,13 +20,17 @@
 	<div class="row">
     <div class="col-md-3">
 
-      <div class="box box-solid">
-        <div class="box-header">
+      <div class="box box-success collapsed-box box-solid">
+        <div class="box-header with-border">
           <h3 class="box-title">Add New Building</h3>
-          <div class="box-tools pull-right">
-          </div>
-        </div><!-- /.box-header -->
 
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
         <div class="box-body">
           <form role="form">
             <div class="box-body">
@@ -69,14 +73,110 @@
               </div>
 
             </div>                
-      <!-- /.box-body -->
+            <!-- /.box-body -->
 
-      <div class="box-footer">
-        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
-      </div>
-    </form>
+          </form>
         </div><!-- /.box-body -->
-      </div><!-- /.box -->
+        <!-- /.box-body -->
+      </div>
+
+      <div class="box box-warning collapsed-box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">Edit Existing Building</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form role="form">
+            <div class="box-body">
+
+              <div class="form-group">
+              <label>Name</label>
+                <input type="text" class="form-control" id="building-name" placeholder="Building Name">
+              </div>
+
+              <div class="form-group">
+              <label>Height</label>
+                <input type="text" class="form-control" id="building-height" maxlength="4" size="4" onkeypress="setHeight(this)" placeholder="100">
+              </div>
+
+              <div class="form-group">
+                <label>Wall Color</label>
+
+                <div class="input-group my-colorpicker2">
+                  <input type="text" class="form-control" id="wallColor" onkeypress="setWallColor(this)"
+                  placeholder="#ff0000">
+
+                  <div class="input-group-addon">
+                    <i></i>
+                  </div>
+                </div>
+                <!-- /.input group -->
+              </div>
+
+              <div class="form-group">
+                <label>Roof Color</label>
+
+                <div class="input-group my-colorpicker2">
+                  <input type="text" class="form-control" id="roofColor" onkeypress="setRoofColor(this)" placeholder="#ff8000">
+
+                  <div class="input-group-addon">
+                    <i></i>
+                  </div>
+                </div>
+                <!-- /.input group -->
+              </div>
+
+            </div>                
+            <!-- /.box-body -->
+          </form>
+        </div><!-- /.box-body -->
+        <!-- /.box-body -->
+      </div>
+
+      <div class="box box-danger collapsed-box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">Delete Existing Building</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Launch demo modal
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.box-body -->
+        <!-- /.box-body -->
+      </div>
 
     </div>
     
