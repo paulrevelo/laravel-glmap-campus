@@ -31,10 +31,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/settings', function () {
-    return view('settings');
-});
-
+//Route::get('/settings', function () {
+//    return view('settings');
+//});
 
 /*
 |--------------------------------------------------------------------------

@@ -55,7 +55,7 @@
             </li>
 
             <li>
-              <a href="<?php echo e(url('about')); ?>">
+              <a href="<?php echo e(url('settings')); ?>">
                 <i class="fa fa-user fa-fw"></i> 
                 <span>About</span>
               </a>

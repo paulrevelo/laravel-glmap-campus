@@ -55,7 +55,7 @@
             </li>
 
             <li>
-              <a href="{{ url('about') }}">
+              <a href="{{ url('settings') }}">
                 <i class="fa fa-user fa-fw"></i> 
                 <span>About</span>
               </a>

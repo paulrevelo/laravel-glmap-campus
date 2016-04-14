@@ -1612,7 +1612,7 @@ osmb.addMapTiles(
 };
 
 // GEOJSON DATA
-osmb.addGeoJSON('{{ asset("/json/polygons.json") }}');
+osmb.addGeoJSON(geojson);
 
 // button handling
 var currentPoint = 'default';
