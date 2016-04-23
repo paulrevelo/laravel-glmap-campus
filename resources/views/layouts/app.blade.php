@@ -9,6 +9,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('layouts.partials.htmlheader')
 @show
 
+@yield('css-glmap')
+
+@yield('css-map-editor')
+
 <!--
 BODY TAG OPTIONS:
 =================
@@ -57,6 +61,12 @@ desired effect
 @section('scripts')
     @include('layouts.partials.scripts')
 @show
+
+@yield('scripts-glmap')
+
+@yield('scripts-map-editor')
+
+@yield('scripts-events')
 
 </body>
 </html>

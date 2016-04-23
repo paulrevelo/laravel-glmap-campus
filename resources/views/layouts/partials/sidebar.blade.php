@@ -33,38 +33,45 @@
         <ul class="sidebar-menu">
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
-            <li>
+            <li {{{ (Request::is('index') ? 'class=active' : '') }}}>
               <a href="{{ url('index') }}">
                 <i class="fa fa-home fa-fw"></i>
                 <span>Home</span>
               </a>
             </li>
 
-            <li>
+            <li {{{ (Request::is('map-editor') ? 'class=active' : '') }}}>
               <a href="{{ url('map-editor') }}">
                 <i class="fa fa-map fa-fw"></i> 
                 <span>Map Editor</span>
               </a>
             </li>
 
-            <li>
+            <li {{{ (Request::is('buildings') ? 'class=active' : '') }}}>
+              <a href="{{ url('buildings') }}">
+                <i class="fa fa-building fa-fw"></i> 
+                <span>Buildings</span>
+              </a>
+            </li>
+
+            <li {{{ (Request::is('events') ? 'class=active' : '') }}}>
               <a href="{{ url('events') }}">
-                <i class="fa fa-bookmark fa-fw"></i> 
+                <i class="fa fa-flag fa-fw"></i> 
                 <span>Events</span>
               </a>
             </li>
 
-            <li>
-              <a href="{{ url('about') }}">
+            <li {{{ (Request::is('settings') ? 'class=active' : '') }}}>
+              <a href="{{ url('settings') }}">
                 <i class="fa fa-user fa-fw"></i> 
                 <span>About</span>
               </a>
             </li>
 
             <li>
-              <a href="{{ url('settings') }}">
-                <i class="fa fa-gears fa-fw"></i> 
-                <span>Settings</span>
+              <a href="{{ url('logout') }}">
+                <i class="fa fa-sign-out fa-fw"></i> 
+                <span>Logout</span>
               </a>
             </li>
 

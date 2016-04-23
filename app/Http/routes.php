@@ -23,6 +23,10 @@ Route::get('/map-editor', function () {
     return view('map-editor');
 });
 
+Route::get('/buildings', function () {
+    return view('buildings');
+});
+
 Route::get('/events', function () {
     return view('events');
 });
@@ -31,10 +35,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/settings', function () {
-    return view('settings');
-});
-
+//Route::get('/settings', function () {
+//    return view('settings');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +53,4 @@ Route::get('/settings', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
