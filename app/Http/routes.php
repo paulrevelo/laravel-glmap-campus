@@ -53,3 +53,4 @@ Route::get('/about', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+

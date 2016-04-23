@@ -905,3 +905,21 @@ Stack trace:
 #21 D:\myapps\interactive-map\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #22 D:\myapps\interactive-map\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #23 {main}  
+[2016-04-23 12:25:01] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';'' in D:\myapps\interactive-map\storage\framework\views\91b4e8eaa662a09e65c32c1504904ae378498356.php:36
+Stack trace:
+#0 {main}  
+[2016-04-23 12:25:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';'' in D:\myapps\interactive-map\storage\framework\views\91b4e8eaa662a09e65c32c1504904ae378498356.php:36
+Stack trace:
+#0 {main}  
+[2016-04-23 12:27:58] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<'' in D:\myapps\interactive-map\app\Http\routes.php:57
+Stack trace:
+#0 {main}  
+[2016-04-23 12:28:21] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in D:\myapps\interactive-map\app\Http\routes.php:61
+Stack trace:
+#0 {main}  
+[2016-04-23 12:28:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<'' in D:\myapps\interactive-map\app\Http\routes.php:68
+Stack trace:
+#0 {main}  
+[2016-04-23 12:28:53] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'HTML' not found' in D:\myapps\interactive-map\app\Http\routes.php:14
+Stack trace:
+#0 {main}  
