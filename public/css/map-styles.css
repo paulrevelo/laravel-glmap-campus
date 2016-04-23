@@ -60,3 +60,7 @@
   padding: 8px;
   position: absolute;
 }
+
+textarea.form-control {
+  height: 100%;
+}

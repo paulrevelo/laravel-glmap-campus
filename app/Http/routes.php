@@ -23,6 +23,10 @@ Route::get('/map-editor', function () {
     return view('map-editor');
 });
 
+Route::get('/buildings', function () {
+    return view('buildings');
+});
+
 Route::get('/events', function () {
     return view('events');
 });

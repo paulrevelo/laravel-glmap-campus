@@ -48,8 +48,15 @@
             </li>
 
             <li>
+              <a href="{{ url('buildings') }}">
+                <i class="fa fa-building fa-fw"></i> 
+                <span>Buildings</span>
+              </a>
+            </li>
+
+            <li>
               <a href="{{ url('events') }}">
-                <i class="fa fa-bookmark fa-fw"></i> 
+                <i class="fa fa-flag fa-fw"></i> 
                 <span>Events</span>
               </a>
             </li>

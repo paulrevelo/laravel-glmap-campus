@@ -1,5 +1,5 @@
 <?php $__env->startSection('css-map-editor'); ?>
-	<link href="<?php echo e(asset('/css/map-styles.css')); ?>" rel="stylesheet" type="text/css" />
+	<link href="css/map-styles.css" rel="stylesheet" type="text/css" />
 
   <link href="<?php echo e(asset('/css/colorpicker/bootstrap-colorpicker.min.css')); ?>" rel="stylesheet" type="text/css" />
 
@@ -16,7 +16,14 @@
 
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
+
     <div class="col-md-3">
+      <div class="box box-success collapsed-box box-solid">
+        <textarea id="resultarea" class="form-control" rows="15"></textarea>
+      </div>
+    </div>
+
+    <!-- <div class="col-md-3">
 
       <div class="box box-success collapsed-box box-solid">
         <div class="box-header with-border">
@@ -26,9 +33,9 @@
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
             </button>
           </div>
-          <!-- /.box-tools -->
+
         </div>
-        <!-- /.box-header -->
+
         <div class="box-body">
           <form role="form">
             <div class="box-body">
@@ -54,7 +61,7 @@
                     <i></i>
                   </div>
                 </div>
-                <!-- /.input group -->
+
               </div>
 
               <div class="form-group">
@@ -67,18 +74,17 @@
                     <i></i>
                   </div>
                 </div>
-                <!-- /.input group -->
+
               </div>
 
             </div>                
-            <!-- /.box-body -->
 
           </form>
-        </div><!-- /.box-body -->
-        <!-- /.box-body -->
+        </div>
+
       </div>
 
-    </div>
+    </div> -->
     
     <div class="col-md-9">
       <div id="map-canvas" class="box box-solid"></div>
@@ -129,11 +135,9 @@
       zoom: 19
     }).addTo(map);
 
-    // load GeoJSON from an external file
-    $.getJSON("rodents.geojson",function(data){
-      // add GeoJSON layer to the map once the file is loaded
-      L.geoJson(data).addTo(map);
-    });
+    var geojson = {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[124.24492120742796,8.24466219137958],[124.24698114395143,8.243791518450246],[124.24693822860716,8.241986458709938],[124.24524307250975,8.240648585587165],[124.24442768096922,8.243536686986348]]]}};
+    
+    L.geoJson(geojson).addTo(map);
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
@@ -142,7 +146,6 @@
       draw: {
         position: 'topleft',
         polygon: {
-          title: 'Draw a sexy polygon!',
           allowIntersection: false,
           drawError: {
             color: '#b00b00',
@@ -153,14 +156,10 @@
           },
           showArea: true
         },
-        polyline: {
-          metric: false
-        },
-        circle: {
-          shapeOptions: {
-            color: '#662d91'
-          }
-        }
+        polyline: false,
+        circle: false,
+        rectangle: false,
+        marker: false
       },
       edit: {
         featureGroup: drawnItems
@@ -169,15 +168,46 @@
     map.addControl(drawControl);
 
     map.on('draw:created', function (e) {
-      var type = e.layerType,
+    var type = e.layerType,
         layer = e.layer;
 
-      if (type === 'marker') {
-        layer.bindPopup('A popup!');
+    if (type === 'polygon') {
+      // structure the geojson object
+      var geojson = {};
+      geojson['type'] = 'Feature';
+      geojson['geometry'] = {};
+      geojson['geometry']['type'] = "Polygon";
+
+      // export the coordinates from the layer
+      coordinates = [];
+      latlngs = layer.getLatLngs();
+      for (var i = 0; i < latlngs.length; i++) {
+          coordinates.push([latlngs[i].lng, latlngs[i].lat])
       }
 
-      drawnItems.addLayer(layer);
+      // push the coordinates to the json geometry
+      geojson['geometry']['coordinates'] = [coordinates];
+
+      // Finally, show the poly as a geojson object in the console
+      //console.log(JSON.stringify(geojson));
+
+      var result = JSON.stringify(geojson);
+
+      document.getElementById("resultarea").innerHTML = result;
+    }
+  drawnItems.addLayer(layer);
+  });
+
+  map.on('draw:edited', function (e) {
+    var layers = e.layers;
+    layers.eachLayer(function (layer) {
+      if (layer instanceof L.Polyline) {
+          //Do marker specific actions here
+      }
+        //do whatever you want, most likely save back to db
     });
+  });
+
   </script>
 <?php $__env->stopSection(); ?>
 
