@@ -36,6 +36,10 @@ class AdminLTETemplateServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->booted(function () {
+            $this->defineRoutes();
+        });
+
         $this->publishHomeController();
         $this->changeAuthController();
         $this->publishPublicAssets();
@@ -47,6 +51,16 @@ class AdminLTETemplateServiceProvider extends ServiceProvider
     /**
      * Define the AdminLTETemplate routes.
      */
+    protected function defineRoutes()
+    {
+        if (!$this->app->routesAreCached()) {
+            $router = app('router');
+
+            $router->group(['namespace' => $this->getAppNamespace().'Http\Controllers'], function () {
+                require __DIR__.'/../Http/routes.php';
+            });
+        }
+    }
 
     /**
      * Publish Home Controller.

@@ -33,35 +33,35 @@
         <ul class="sidebar-menu">
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
-            <li <?php echo e((Request::is('index') ? 'class=active' : '')); ?>>
+            <li>
               <a href="<?php echo e(url('index')); ?>">
                 <i class="fa fa-home fa-fw"></i>
                 <span>Home</span>
               </a>
             </li>
 
-            <li <?php echo e((Request::is('map-editor') ? 'class=active' : '')); ?>>
+            <li>
               <a href="<?php echo e(url('map-editor')); ?>">
                 <i class="fa fa-map fa-fw"></i> 
                 <span>Map Editor</span>
               </a>
             </li>
 
-            <li <?php echo e((Request::is('buildings') ? 'class=active' : '')); ?>>
+            <li>
               <a href="<?php echo e(url('buildings')); ?>">
                 <i class="fa fa-building fa-fw"></i> 
                 <span>Buildings</span>
               </a>
             </li>
 
-            <li <?php echo e((Request::is('events') ? 'class=active' : '')); ?>>
+            <li>
               <a href="<?php echo e(url('events')); ?>">
                 <i class="fa fa-flag fa-fw"></i> 
                 <span>Events</span>
               </a>
             </li>
 
-            <li <?php echo e((Request::is('settings') ? 'class=active' : '')); ?>>
+            <li>
               <a href="<?php echo e(url('settings')); ?>">
                 <i class="fa fa-user fa-fw"></i> 
                 <span>About</span>

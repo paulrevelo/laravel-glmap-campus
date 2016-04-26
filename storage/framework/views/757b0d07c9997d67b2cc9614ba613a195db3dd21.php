@@ -88,7 +88,6 @@
     
     <div class="col-md-9">
       <div id="map-canvas" class="box box-solid"></div>
-      <div id="info"><h2>Waiting for the Ajax Callback...</h2></div>
     </div>
 
     <!-- Modal -->
@@ -136,68 +135,9 @@
       zoom: 19
     }).addTo(map);
 
-    function style(feature) {
-      return {
-        weight: 2,
-        color: '#222D32',
-        fillOpacity: 0.8,
-        fillColor: '#00A65A'
-      };
-    }
-
-    function highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        weight: 5,
-        color: 'black'
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera) {
-          layer.bringToFront();
-      }
-    }
-
-    var geojsonLayer;
-
-    function resetHighlight(e) {
-      geojsonLayer.resetStyle(e.target);
-    }
-
-    function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
-    }
-
-    function onEachFeature(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-
-      if (feature.properties) {
-        var popupString = '<div class="popup">';
-        for (var k in feature.properties) {
-            var v = feature.properties[k];
-            popupString += k + ': ' + v + '<br />';
-        }
-        popupString += '</div>';
-        layer.bindPopup(popupString, {
-            maxHeight: 200
-        });
-      }
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "<?php echo e(asset('/json/polygons.geojson')); ?>",
-      dataType: 'json',
-      success: function (response) {
-        geojsonLayer = L.geoJson(response, {style:style,onEachFeature:onEachFeature}).addTo(map);
-        map.fitBounds(geojsonLayer.getBounds());
-        $("#info").fadeOut(500);
-      }
-    });       
+    var geojson = {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[124.24492120742796,8.24466219137958],[124.24698114395143,8.243791518450246],[124.24693822860716,8.241986458709938],[124.24524307250975,8.240648585587165],[124.24442768096922,8.243536686986348]]]}};
+    
+    L.geoJson(geojson).addTo(map);
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);

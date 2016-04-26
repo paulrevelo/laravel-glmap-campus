@@ -11,34 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/index', function () {
-    return view('index');
-});
-
-Route::get('/map-editor', function () {
-    return view('map-editor');
-});
-
-Route::get('/buildings', function () {
-    return view('buildings');
-});
-
-Route::get('/events', function () {
-    return view('events');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-//Route::get('/settings', function () {
-//    return view('settings');
-//});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -51,6 +23,123 @@ Route::get('/about', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
-});
+	    //
 
+	Route::get('/', [
+		'uses' => 'HomeController@index', 
+		'as' => 'home'
+	]);
+	Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
+
+	/* testing routes */
+
+	//Backend Routes
+
+	Route::resource('events', 'EventController');
+	//add event backend routes
+
+	// Route::resource('buildings', 'BuildingController');
+	// add building backend routes
+
+	Route::controller('buildings', 'DatatablesController', [
+    'anyData'  => 'datatables.data',
+    'getIndex' => 'datatables',
+	]);
+
+	Route::resource('user', 'UserController');
+	//add user backend routes
+
+	Route::get('/map-editor', 'BuildingController@polygon_map_editor');
+
+	Route::get('/index', 'BuildingController@polygon_index');
+
+/*	
+	// Admin
+	Route::get('admin', [
+		'uses' => 'AdminController@admin',
+		'as' => 'admin',
+		'middleware' => 'admin'
+	]);
+
+	Route::get('medias', [
+		'uses' => 'AdminController@filemanager',
+		'as' => 'medias',
+		'middleware' => 'redac'
+	]);
+
+
+	Route::get('/index', function () {
+	    return view('main.index');
+	});
+
+
+
+
+	*/
+	
+	/* 
+
+	Route::get('user', UserController);
+	//add user backend routes
+	*/
+
+/*
+	Route::get('/about', function () {
+	    return view('about');
+	});*/
+
+	//Route::get('/settings', function () {
+	//    return view('settings');
+	//});
+
+	//Normal User  Routes
+	/*
+		Route::get('/', function () {
+		    return view('welcome'); 
+		});
+
+		Route::get('map-editor', function () {
+		    return view('layouts.back.map'); 
+	});
+	*/
+
+	/* modified routes (RESTful API)
+	Route::resource('/', DisplayController, [
+		'only' => ['show'] //show metadata of buildings
+	]});
+	*/
+
+	// User
+	Route::get('user/sort/{role}', 'UserController@indexSort');
+
+	Route::get('user/roles', 'UserController@getRoles');
+	Route::post('user/roles', 'UserController@postRoles');
+
+	Route::put('userseen/{user}', 'UserController@updateSeen');
+
+	Route::resource('user', 'UserController');
+
+
+	// Authentication routes...
+	Route::get('auth/login', 'Auth\AuthController@getLogin');
+	Route::post('auth/login', 'Auth\AuthController@postLogin');
+	Route::get('auth/logout', 'Auth\AuthController@getLogout');
+	Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
+
+	// Resend routes...
+	Route::get('auth/resend', 'Auth\AuthController@getResend');
+
+	// Registration routes...
+	Route::get('auth/register', 'Auth\AuthController@getRegister');
+	Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+	// Password reset link request routes...
+	Route::get('password/email', 'Auth\PasswordController@getEmail');
+	Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+	// Password reset routes...
+	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('password/reset', 'Auth\PasswordController@postReset');
+/*	
+*/
+});

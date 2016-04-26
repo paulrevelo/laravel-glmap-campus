@@ -4,14 +4,13 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
+<head>
+    @section('htmlheader')
+        @include('layouts.partials.htmlheader')
+    @show
 
-@section('htmlheader')
-    @include('layouts.partials.htmlheader')
-@show
-
-@yield('css-glmap')
-
-@yield('css-map-editor')
+    @yield('added-css-scripts')
+</head>
 
 <!--
 BODY TAG OPTIONS:
@@ -62,11 +61,7 @@ desired effect
     @include('layouts.partials.scripts')
 @show
 
-@yield('scripts-glmap')
-
-@yield('scripts-map-editor')
-
-@yield('scripts-events')
+@yield('added_js_scripts')
 
 </body>
 </html>

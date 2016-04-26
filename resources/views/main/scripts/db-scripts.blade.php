@@ -1,47 +1,6 @@
-@extends('layouts.app')
-
-@section('contentheader_title')
-	Events
-@endsection
-
-@section('main-content')
-	<div class="row">
-    <div class="col-md-12">
-
-      <div class="box box-success">
-        <div class="box-header">
-          <h3 class="box-title">Events</h3>
-          <div class="box-tools pull-right">
-            <a href="add-event.php" class="btn btn-success btn-flat"><i class="fa fa-plus fa-fw"></i>Add New Event</a>
-          </div>
-        </div><!-- /.box-header -->
-
-        <div class="box-body" id="dvData">
-
-          <table id="example" class="table table-hover table-condensed">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Date</th>      
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody>      
-            </tbody>
-          </table>
-        </div><!-- /.box-body -->
-      </div><!-- /.box -->
-
-    </div>
-  </div>
-@endsection
-
-@section('scripts-events')
 
 	<!-- DATA TABLE -->
-  <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/jquery.dataTables.min.js') }}"></script>
+  <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/dataTables.bootstrap.min.js') }}"></script>
   <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/more/dataTables.buttons.min.js') }}"></script>
   <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/more/dataTables.select.min.js') }}"></script>
@@ -57,7 +16,7 @@
   <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/more/pdfmake.min.js') }}"></script>
   <script type="text/javascript" language="javascript" src="{{ asset('/js/datatables/more/vfs_fonts.js') }}"></script>
 
-  <script>
+ <!--  <script>
     $(document).ready(function() {
         var table = $('#example').DataTable( {
             select: true,
@@ -113,5 +72,5 @@
         table.buttons().container()
             .appendTo( '#example_wrapper .col-sm-6:eq(1)' );
     } );  
-  </script>
-@endsection
+  </script> -->
+

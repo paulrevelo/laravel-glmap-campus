@@ -27,6 +27,8 @@
     23 => 'App\\Providers\\EventServiceProvider',
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider',
+    26 => 'App\\Services\\Html\\HtmlServiceProvider',
+    27 => 'Yajra\\Datatables\\DatatablesServiceProvider',
   ),
   'eager' => 
   array (
@@ -44,6 +46,7 @@
     11 => 'App\\Providers\\EventServiceProvider',
     12 => 'App\\Providers\\RouteServiceProvider',
     13 => 'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider',
+    14 => 'Yajra\\Datatables\\DatatablesServiceProvider',
   ),
   'deferred' => 
   array (
@@ -130,6 +133,10 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'html' => 'App\\Services\\Html\\HtmlServiceProvider',
+    'form' => 'App\\Services\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'App\\Services\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'App\\Services\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -167,6 +174,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'App\\Services\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
-@section('css-glmap')
-  <link href="{{ asset('/css/map-styles.css') }}" rel="stylesheet" type="text/css" />
-
-  <link rel='stylesheet prefetch' href='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.css'>
+@section('added-css-scripts')
+  @include('main.scripts.css-glscripts')  
 @endsection
 
 @section('contentheader_title')
@@ -61,12 +59,9 @@
 
 @endsection
 
-@section('scripts-glmap')
-  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/GLMap/GLMap.js'></script>
+@section('added_js_scripts')
 
-  <script src='http://cdn.osmbuildings.org/OSMBuildings-GLMap-2.0.0/OSMBuildings/OSMBuildings-GLMap.js'></script>
-      
-  <script src="https://cdn.rawgit.com/tweenjs/tween.js/master/src/Tween.js"></script>
+  @include('main.scripts.js-glscripts') 
 
   <script>
     
@@ -120,7 +115,10 @@
     };
 
     // GEOJSON DATA
-    osmb.addGeoJSON("{{ asset('/json/polygons.geojson') }}");
+    @include('main.back.partials.json-scripts')
+
+    // ADD THE DATA
+    osmb.addGeoJSON(geojson);
 
     // button handling
     var currentPoint = 'default';
@@ -234,5 +232,6 @@
         $('[data-toggle=tooltip]').tooltip(); 
     });
 
-  </script>
+  </script> 
 @endsection
+
