@@ -35,13 +35,15 @@ Route::group(['middleware' => ['web']], function () {
 
 	//Backend Routes
 
-	Route::resource('events', 'EventController');
-	//add event backend routes
+	Route::controller('events', 'EventDatatablesController', [
+    'anyData'  => 'datatables.data2',
+    'getIndex' => 'datatables2',
+	]);
 
 	// Route::resource('buildings', 'BuildingController');
 	// add building backend routes
 
-	Route::controller('buildings', 'DatatablesController', [
+	Route::controller('buildings', 'BuildingDatatablesController', [
     'anyData'  => 'datatables.data',
     'getIndex' => 'datatables',
 	]);
@@ -49,9 +51,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('user', 'UserController');
 	//add user backend routes
 
-	Route::get('/map-editor', 'BuildingController@polygon_map_editor');
-
 	Route::get('/index', 'BuildingController@polygon_index');
+
+	Route::get('/map-editor', 'BuildingController@polygon_map_editor');
 
 /*	
 	// Admin

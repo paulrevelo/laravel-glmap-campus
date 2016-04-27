@@ -29,6 +29,7 @@
     25 => 'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider',
     26 => 'App\\Services\\Html\\HtmlServiceProvider',
     27 => 'Yajra\\Datatables\\DatatablesServiceProvider',
+    28 => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'eager' => 
   array (
@@ -133,10 +134,10 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
-    'html' => 'App\\Services\\Html\\HtmlServiceProvider',
-    'form' => 'App\\Services\\Html\\HtmlServiceProvider',
-    'Collective\\Html\\HtmlBuilder' => 'App\\Services\\Html\\HtmlServiceProvider',
-    'Collective\\Html\\FormBuilder' => 'App\\Services\\Html\\HtmlServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -177,6 +178,9 @@
     array (
     ),
     'App\\Services\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),

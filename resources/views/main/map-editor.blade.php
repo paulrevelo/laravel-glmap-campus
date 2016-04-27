@@ -26,116 +26,148 @@
           </div>
           <div class="modal-body row">
             
-            <form role="form">
+            {!! Form::open(['url' => 'main/map-editor']) !!}
           
-              <div class="form-group col-md-9">
-              <label>Name</label>
-                <input type="text" class="form-control" id="building-name" placeholder="Building Name">
+              <div class="form-group col-md-9 {{ $errors->has('building-name') ? 'has-error' : ''}}">
+              {!! Form::label('building-name', 'Name: ') !!}
+                {!! Form::text('building-name', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'building-name']) !!}
+                {!! $errors->first('building-name', '<p class="help-block">:message</p>') !!}
               </div>
 
-              <div class="form-group col-md-3">
-              <label>Height</label>
-                <input type="text" class="form-control" id="building-height" maxlength="4" size="4" onkeypress="setHeight(this)" placeholder="10">
+              <div class="form-group col-md-3 {{ $errors->has('building-height') ? 'has-error' : ''}}">
+              {!! Form::label('building-height', 'Height: ') !!}
+                {!! Form::text('building-height', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'building-name', 'maxlength' => '4', 'size' => '4' ]) !!}
+                {!! $errors->first('building-height', '<p class="help-block">:message</p>') !!}
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Wall Color</label>
+              <div class="form-group col-md-6 {{ $errors->has('wall-color') ? 'has-error' : ''}}">
+                {!! Form::label('wall-color', 'Wall Color: ') !!}
                 <div class="input-group my-colorpicker2">
-                  <input type="text" class="form-control" id="wallColor" onkeypress="setWallColor(this)"placeholder="#ff0000">
+                  {!! Form::text('wall-color', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'wall-color', 'placeholder' => '#ff0000']) !!}
+                  {!! $errors->first('wall-color', '<p class="help-block">:message</p>') !!}
                   <div class="input-group-addon">
                     <i></i>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Roof Color</label>
+              <div class="form-group col-md-6 {{ $errors->has('roof-color') ? 'has-error' : ''}}">
+                {!! Form::label('roof-color', 'Roof Color: ') !!}
                 <div class="input-group my-colorpicker2">
-                  <input type="text" class="form-control" id="roofColor" onkeypress="setRoofColor(this)" placeholder="#ff8000">
+                  {!! Form::text('roof-color', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'roof-color', 'placeholder' => '#ff8000', 'onkeypress' => 'setRoofColor(this)']) !!}
+                  {!! $errors->first('roof-color', '<p class="help-block">:message</p>') !!}
                   <div class="input-group-addon">
                     <i></i>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-12">
-              <label>Description</label>
-                <textarea id="description" class="form-control" rows="5"></textarea>        
+              <div class="form-group col-md-12 {{ $errors->has('description') ? 'has-error' : ''}}">
+              {!! Form::label('description', 'Description: ') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required', 'rows' => '5']) !!}
+                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}   
               </div>     
 
-              <div class="form-group col-md-12">
-              <label>Coordinates</label>
-                <textarea id="resultarea" class="form-control" rows="5"></textarea>        
-              </div>  
+              <div class="form-group col-md-12 {{ $errors->has('coordinates') ? 'has-error' : ''}}">
+              {!! Form::label('coordinates', 'Coordinates: ') !!}
+                {!! Form::textarea('coordinates', null, ['id' => 'resultarea', 'class' => 'form-control', 'required' => 'required', 'rows' => '5']) !!}
+                {!! $errors->first('coordinates', '<p class="help-block">:message</p>') !!}       
+              </div>
 
-            </form>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
           </div>
+          {!! Form::close() !!}
+
+          @if ($errors->any())
+            <ul class="alert alert-danger">
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          @endif
+
         </div>
       </div>
     </div>
 
     <!-- EDIT MODAL -->
-    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="edit-modal" onclick="getData(feature.id)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Add New Building</h4>
+            <h4 class="modal-title" id="myModalLabel">Edit Building</h4>
           </div>
           <div class="modal-body row">
             
-            <form role="form">
+            {!! Form::open(['url' => 'main/map-editor']) !!}
           
-              <div class="form-group col-md-9">
-              <label>Name</label>
-                <input type="text" class="form-control" id="building-name" placeholder="Building Name">
+              <div class="form-group col-md-9 {{ $errors->has('building-name') ? 'has-error' : ''}}">
+              {!! Form::label('building-name', 'Name: ') !!}
+                {!! Form::text('building-name', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'building-name']) !!}
+                {!! $errors->first('building-name', '<p class="help-block">:message</p>') !!}
               </div>
 
-              <div class="form-group col-md-3">
-              <label>Height</label>
-                <input type="text" class="form-control" id="building-height" maxlength="4" size="4" onkeypress="setHeight(this)" placeholder="10">
+              <div class="form-group col-md-3 {{ $errors->has('building-height') ? 'has-error' : ''}}">
+              {!! Form::label('building-height', 'Height: ') !!}
+                {!! Form::text('building-height', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'building-name', 'maxlength' => '4', 'size' => '4' ]) !!}
+                {!! $errors->first('building-height', '<p class="help-block">:message</p>') !!}
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Wall Color</label>
+              <div class="form-group col-md-6 {{ $errors->has('wall-color') ? 'has-error' : ''}}">
+                {!! Form::label('wall-color', 'Wall Color: ') !!}
                 <div class="input-group my-colorpicker2">
-                  <input type="text" class="form-control" id="wallColor" onkeypress="setWallColor(this)"placeholder="#ff0000">
+                  {!! Form::text('wall-color', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'wall-color', 'placeholder' => '#ff0000']) !!}
+                  {!! $errors->first('wall-color', '<p class="help-block">:message</p>') !!}
                   <div class="input-group-addon">
                     <i></i>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Roof Color</label>
+              <div class="form-group col-md-6 {{ $errors->has('roof-color') ? 'has-error' : ''}}">
+                {!! Form::label('roof-color', 'Roof Color: ') !!}
                 <div class="input-group my-colorpicker2">
-                  <input type="text" class="form-control" id="roofColor" onkeypress="setRoofColor(this)" placeholder="#ff8000">
+                  {!! Form::text('roof-color', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'roof-color', 'placeholder' => '#ff8000', 'onkeypress' => 'setRoofColor(this)']) !!}
+                  {!! $errors->first('roof-color', '<p class="help-block">:message</p>') !!}
                   <div class="input-group-addon">
                     <i></i>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-12">
-              <label>Description</label>
-                <textarea id="description" class="form-control" rows="5"></textarea>        
+              <div class="form-group col-md-12 {{ $errors->has('description') ? 'has-error' : ''}}">
+              {!! Form::label('description', 'Description: ') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required', 'rows' => '5']) !!}
+                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}   
               </div>     
 
-              <div class="form-group col-md-12">
-              <label>Coordinates</label>
-                <textarea id="resultarea" class="form-control" rows="5"></textarea>        
+              <div class="form-group col-md-12 {{ $errors->has('coordinates') ? 'has-error' : ''}}">
+              {!! Form::label('coordinates', 'Coordinates: ') !!}
+                {!! Form::textarea('coordinates', null, ['id' => 'resultarea', 'class' => 'form-control', 'required' => 'required', 'rows' => '5']) !!}
+                {!! $errors->first('coordinates', '<p class="help-block">:message</p>') !!}       
               </div>  
 
-            </form>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
           </div>
+          {!! Form::close() !!}
+
+          @if ($errors->any())
+            <ul class="alert alert-danger">
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          @endif
+
         </div>
       </div>
     </div>
@@ -148,6 +180,9 @@
 
   <script>
 
+    // function getData(id) {
+    //   $.ajax
+    // }
 
     //color picker with addon
     $(".my-colorpicker2").colorpicker();
@@ -195,6 +230,7 @@
 
     function zoomToFeature(e) {
       map.fitBounds(e.target.getBounds());
+      //alert(feature.properties.id);
     }
 
     function onEachFeature(feature, layer) {

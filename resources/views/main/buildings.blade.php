@@ -13,19 +13,17 @@
           <h3 class="box-title">Buildings</h3>
         </div><!-- /.box-header -->
 
-        <div class="box-body" id="dvData">
+        <div class="box-body">
 
-          <table id="example" class="table table-hover table-condensed">
+          <table id="buildings-table" class="table table-hover table-condensed">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th>Action</th>                
               </tr>
             </thead>
-            <!-- <tbody>
-              @include('main.back.building.table')
-            </tbody> -->
           </table>
         </div><!-- /.box-body -->
       </div><!-- /.box -->

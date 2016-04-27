@@ -1,9 +1,19 @@
-          @foreach ($events as $event)
-            <tr>
-              <td class="text-primary"><strong>{{ $event->name }}</strong></td>
-              <td>{{ $event->description }}</td> 
-              <td>{{ $event->location }}</td> 
-              <td>{{ $event->schedule }}</td> 
-              <td></td>
-            </tr>
-          @endforeach
+<script>
+$(function() {
+  $('#events-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: '{!! route('datatables.data2') !!}',
+      columns: [
+       		{ data: 'id', name: 'id' },
+          { data: 'name', name: 'name' },
+          { data: 'description', name: 'description' },
+          { data: 'location', name: 'location' },
+          { data: 'schedule', name: 'schedule' }
+
+          //{ data: 'action', name: 'action', orderable: false, searchable: false}
+      ]
+  });
+});
+</script>
+

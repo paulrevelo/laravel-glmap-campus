@@ -1,4 +1,3 @@
-<head>
     <meta charset="UTF-8">
     <title> AdminLTE 2 with Laravel - <?php echo $__env->yieldContent('htmlheader_title', 'Your title here'); ?> </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -21,5 +20,3 @@
     <link href="<?php echo e(asset('/css/skins/_all-skins.min.css')); ?>" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="<?php echo e(asset('/plugins/iCheck/square/blue.css')); ?>" rel="stylesheet" type="text/css" />  
-    
-</head>

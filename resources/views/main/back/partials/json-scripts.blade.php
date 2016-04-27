@@ -10,7 +10,7 @@
 						coordinates: {{ $polygon->polygon }}
 					},
 					properties: {
-									id: "{{ $polygon->id }}",
+						id: "{{ $polygon->id }}",
 	           			roofColor: "{{ $polygon->roofcolor }}",
 	            		height: {{ $polygon->height }},
 	            		wallColor: "{{ $polygon->wallcolor }}"

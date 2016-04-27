@@ -165,6 +165,7 @@ return [
         App\Services\Html\HtmlServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 

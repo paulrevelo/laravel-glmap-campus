@@ -48,4 +48,6 @@ class BuildingController extends Controller
 		$links = $polygons->render();
 		return view('main.index', compact('polygons', 'links'));
 	}
+
+	
 }

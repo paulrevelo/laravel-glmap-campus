@@ -4,14 +4,13 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
+<head>
+    <?php $__env->startSection('htmlheader'); ?>
+        <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->yieldSection(); ?>
 
-<?php $__env->startSection('htmlheader'); ?>
-    <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->yieldSection(); ?>
-
-<?php echo $__env->yieldContent('css-glmap'); ?>
-
-<?php echo $__env->yieldContent('css-map-editor'); ?>
+    <?php echo $__env->yieldContent('added-css-scripts'); ?>
+</head>
 
 <!--
 BODY TAG OPTIONS:
@@ -62,11 +61,7 @@ desired effect
     <?php echo $__env->make('layouts.partials.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->yieldSection(); ?>
 
-<?php echo $__env->yieldContent('scripts-glmap'); ?>
-
-<?php echo $__env->yieldContent('scripts-map-editor'); ?>
-
-<?php echo $__env->yieldContent('scripts-events'); ?>
+<?php echo $__env->yieldContent('added_js_scripts'); ?>
 
 </body>
 </html>
