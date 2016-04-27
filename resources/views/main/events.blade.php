@@ -20,7 +20,7 @@
               
               {!! Form::open(['url' => 'main/events']) !!}
             
-                <div class="form-group col-md-9 {{ $errors->has('event-name') ? 'has-error' : ''}}">
+                <div class="form-group col-md-12 {{ $errors->has('event-name') ? 'has-error' : ''}}">
                 {!! Form::label('event-name', 'Name: ') !!}
                   {!! Form::text('event-name', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'event-name']) !!}
                   {!! $errors->first('event-name', '<p class="help-block">:message</p>') !!}
@@ -32,7 +32,7 @@
                   {!! $errors->first('description', '<p class="help-block">:message</p>') !!}   
                 </div> 
 
-                <div class="form-group col-md-9 {{ $errors->has('location') ? 'has-error' : ''}}">
+                <div class="form-group col-md-12 {{ $errors->has('location') ? 'has-error' : ''}}">
                 {!! Form::label('location', 'Location: ') !!}
                   {!! Form::text('location', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'location']) !!}
                   {!! $errors->first('location', '<p class="help-block">:message</p>') !!}
