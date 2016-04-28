@@ -191,18 +191,20 @@
       coordinates = [];
       latlngs = layer.getLatLngs();
       for (var i = 0; i < latlngs.length; i++) {
-          coordinates.push([latlngs[i].lng, latlngs[i].lat])
+        coordinates.push([latlngs[i].lng, latlngs[i].lat])
       }
 
-      layer.toGeoJSON();
-      setGeoJson();
+      coordinates.splice((latlngs.length + 1), 0, [latlngs[0].lng, latlngs[0].lat]); 
 
-      // var coordinates_result = JSON.stringify(coordinates, null, 4);
-      // document.getElementById("resultarea").innerHTML = coordinates_result;
+      var coordinates_result = JSON.stringify(coordinates, null, 4);
+
+      var final_result = "&#91" + coordinates_result +  "&#93";
+
+      document.getElementById("resultarea").innerHTML = final_result;
 
       }
     drawnItems.addLayer(layer);
-    );
+    });
 
   // map.on('draw:edited', function (e) {
   //   var layers = e.layers;
