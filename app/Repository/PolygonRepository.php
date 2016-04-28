@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Model\BuildingPoly;
+use App\Building;
 
 class PolygonRepository extends BaseRepository{
 
@@ -12,9 +12,9 @@ class PolygonRepository extends BaseRepository{
 	 * @param  App\Models\Building $Building
 	 * @return void
 	 */
-	public function __construct(BuildingPoly $polygon)
+	public function __construct(Building $building)
 	{
-		$this->model = $polygon;
+		$this->model = $building;
 	}
 
 	/**
@@ -44,7 +44,7 @@ class PolygonRepository extends BaseRepository{
 
 	public function allJSON()
 	{
-		$this->$polygon->toJSON();
+		$this->$building->toJSON();
 	}
 
 	public function update()

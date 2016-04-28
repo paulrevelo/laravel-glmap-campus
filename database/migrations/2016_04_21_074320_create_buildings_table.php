@@ -16,7 +16,10 @@ class CreateBuildingsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name', 255);
             $table->longText('description');
-            $table->integer('bpoly_id')->unsigned();
+            $table->smallInteger('height')->unsigned();
+            $table->string('roofcolor',7);
+            $table->string('wallcolor',7);
+            $table->longText('polygon');
             $table->timestamps();
         });
     }

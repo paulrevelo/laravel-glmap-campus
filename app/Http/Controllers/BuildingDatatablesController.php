@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Model\Building;
+use App\Building;
 use Yajra\Datatables\Datatables;
 
 class BuildingDatatablesController extends Controller

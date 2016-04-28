@@ -1,21 +1,21 @@
-	var geojson = {
-		type: "FeatureCollection", 
-		features: [
-			
-			@foreach($polygons as $polygon)
-				{
-					type: "Feature", 
-					geometry: {
-						type: "Polygon",
-						coordinates: {{ $polygon->polygon }}
-					},
-					properties: {
-						id: "{{ $polygon->id }}",
-	           			roofColor: "{{ $polygon->roofcolor }}",
-	            		height: {{ $polygon->height }},
-	            		wallColor: "{{ $polygon->wallcolor }}"
-					}
+var geojson = {
+	type: "FeatureCollection", 
+	features: [
+		
+		@foreach($buildings as $building)
+			{
+				type: "Feature", 
+				geometry: {
+					type: "Polygon",
+					coordinates: {{ $building->polygon }}
 				},
-			@endforeach
-		]
-	};
+				properties: {
+					id: "{{ $building->id }}",
+           			roofColor: "{{ $building->roofcolor }}",
+            		height: {{ $building->height }},
+            		wallColor: "{{ $building->wallcolor }}"
+				}
+			},
+		@endforeach
+	]
+};

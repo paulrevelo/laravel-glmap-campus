@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Model\Event;
+use App\Event;
 use Yajra\Datatables\Datatables;
 
 class EventDatatablesController extends Controller

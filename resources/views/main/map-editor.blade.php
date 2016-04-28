@@ -179,23 +179,16 @@
 	@include('main.scripts.js-editgl')
 
   <script>
-
-    // function getData(id) {
-    //   $.ajax
-    // }
-
+  
     //color picker with addon
     $(".my-colorpicker2").colorpicker();
 
    // create map engine 
     var map = new L.Map('map-canvas');
-    map.setView([8.241354685854704, 124.24403356388211], 16, false);
+    map.setView([8.241354685854704, 124.24403356388211], 17, false);
 
     new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
-      attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>',
-      maxZoom: 18,
-      maxNativeZoom: 20,
-      zoom: 20
+      attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
     }).addTo(map);
 
     @include('main.back.partials.json-scripts')

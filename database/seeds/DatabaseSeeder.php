@@ -52,9 +52,11 @@ class DatabaseSeeder extends Seeder
             'seen' => true,
             'role_id' => 1,
             'confirmed' => true
-        ]);
-        
-        BuildingPoly::create([
+        ]);  
+
+        Building::create([
+            'name' => 'MSU-IIT Cooperative Building',
+            'description' => 'Utangan Building',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -84,12 +86,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'MSU-IIT Cooperative Building',
-            'description' => 'Utangan Building',
-            'bpoly_id' => 1,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'Main Library',
+            'description' => 'Tulugan Building',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -120,12 +118,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Main Library',
-            'description' => 'Tulugan Building',
-            'bpoly_id' => 2,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IDS Multi-purpose Hall',
+            'description' => 'Discohan',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -180,12 +174,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Multi-purpose Hall',
-            'description' => 'Discohan',
-            'bpoly_id' => 3,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IDS Classrooms 1',
+            'description' => 'Bright Building',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -216,13 +206,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Classrooms 1',
-            'description' => 'Bright Building',
-            'bpoly_id' => 4,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'IDS Classrooms 2',
+            'description' => 'Brighter Building',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -253,12 +238,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Classrooms 2',
-            'description' => 'Brighter Building',
-            'bpoly_id' => 5,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IDS Classrooms 3',
+            'description' => 'Brighterer Building',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -289,12 +270,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Classrooms 3',
-            'description' => 'Brighterer Building',
-            'bpoly_id' => 6,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IDS Canteen',
+            'description' => 'Agora',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -325,12 +302,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Canteen',
-            'description' => 'Agora',
-            'bpoly_id' => 7,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IDS Classrooms 4',
+            'description' => 'Somewhere',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -361,13 +334,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Classrooms 4',
-            'description' => 'Somewhere',
-            'bpoly_id' => 8,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'IDS Classrooms 5',
+            'description' => 'Somewhere 2',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -398,13 +366,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Classrooms 5',
-            'description' => 'Somewhere 2',
-            'bpoly_id' => 9,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'KASAMA Building',
+            'description' => 'Elitist Building',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -435,13 +398,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'KASAMA Building',
-            'description' => 'Elitist Building',
-            'bpoly_id' => 10,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'College of Arts and Social Sciences',
+            'description' => 'Taas ug Breeding Building',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -540,13 +498,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Arts and Social Sciences',
-            'description' => 'Taas ug Breeding Building',
-            'bpoly_id' => 11,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'College of Business Administration and Accountancy',
+            'description' => 'Datu Building',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -641,12 +594,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Business Administration and Accountancy',
-            'description' => 'Datu Building',
-            'bpoly_id' => 12,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'School of Engineering Technology',
+            'description' => 'TUnga nga Building',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -685,12 +634,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'School of Engineering Technology',
-            'description' => 'TUnga nga Building',
-            'bpoly_id' => 13,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'School of Computer Studies',
+            'description' => 'Dog Building',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -721,12 +666,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'School of Computer Studies',
-            'description' => 'Dog Building',
-            'bpoly_id' => 14,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'Information and Communications Technology Center',
+            'description' => 'Maintenance Pirmi Building',
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -757,12 +698,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Information and Communications Technology Center',
-            'description' => 'Maintenance Pirmi Building',
-            'bpoly_id' => 15,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'College of Science and Mathematics',
+            'description' => 'Hufflepuff Building',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -845,12 +782,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Science and Mathematics',
-            'description' => 'Hufflepuff Building',
-            'bpoly_id' => 16,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'College of Engineering',
+            'description' => 'Doth Raki Building',
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -905,13 +838,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Engineering',
-            'description' => 'Doth Raki Building',
-            'bpoly_id' => 17,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'College of Engineering EC Office',
+            'description' => 'Doth Raki People',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -946,12 +874,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Engineering EC Office',
-            'description' => 'Doth Raki People',
-            'bpoly_id' => 18,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'College of Nursing',
+            'description' => 'Water tribe',
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1042,12 +966,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Nursing',
-            'description' => 'Water tribe',
-            'bpoly_id' => 19,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'College of Business Administration and Accountancy Extension',
+            'description' => 'Mall of IIT',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1102,12 +1022,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Business Administration and Accountancy Extension',
+            'name' => 'MSU-IIT Gymnasium',
             'description' => 'Mall of IIT',
-            'bpoly_id' => 20,
-        ]);
-
-        BuildingPoly::create([
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1154,12 +1070,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'MSU-IIT Gymnasium',
-            'description' => 'Mall of IIT',
-            'bpoly_id' => 21,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'College of Education',
+            'description' => 'Grace Poe',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1246,12 +1158,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Education',
-            'description' => 'Grace Poe',
-            'bpoly_id' => 22,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'University Clinic',
+            'description' => 'WBI identifier',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1282,12 +1190,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'University Clinic',
-            'description' => 'WBI identifier',
-            'bpoly_id' => 23,
-        ]);
-
-         BuildingPoly::create([
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1322,13 +1224,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Security Office',
-            'description' => 'Brothel',
-            'bpoly_id' => 24,
-        ]);
-
-
-        BuildingPoly::create([
+            'name' => 'Guard House',
+            'description' => 'Tangapan ng mga Mapang-api',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1363,12 +1260,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Guard House',
-            'description' => 'Tangapan ng mga Mapang-api',
-            'bpoly_id' => 25,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'Administration Building',
+            'description' => 'Kurakot',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1399,12 +1292,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Administration Building',
-            'description' => 'Kurakot',
-            'bpoly_id' => 26,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'Bahay Alumni',
+            'description' => 'Bahay walay bahay',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1459,12 +1348,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Bahay Alumni',
-            'description' => 'Bahay walay bahay',
-            'bpoly_id' => 27,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'Alumni Office',
+            'description' => 'StamBahay',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1495,12 +1380,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Alumni Office',
-            'description' => 'StamBahay',
-            'bpoly_id' => 28,
-        ]);
-
-        BuildingPoly::create([
+            'name' => 'IPDM',
+            'description' => 'Peace Office',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1539,12 +1420,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IPDM',
-            'description' => 'Peace Office',
-            'bpoly_id' => 29,
-        ]);
-
-                BuildingPoly::create([
+            'name' => 'College of Education Extension',
+            'description' => 'Likod',
             'height' => 2,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
@@ -1573,14 +1450,6 @@ class DatabaseSeeder extends Seeder
               ]
             ]',
         ]);
-
-        Building::create([
-            'name' => 'College of Education Extension',
-            'description' => 'Likod',
-            'bpoly_id' => 30,
-        ]);
-
-
 
     }
 }

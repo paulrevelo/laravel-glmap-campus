@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Model\Building;
+use App\Building;
 
 class BuildingRepository extends BaseRepository{
 

@@ -77,6 +77,7 @@
     var osmb = new OSMBuildings({
       minZoom: 15,
       maxZoom: 22,
+      effects: ['shadows'],
       attribution: '© 3D <a href=http://osmbuildings.org/copyright/>OSM Buildings</a>'
     }).addTo(map);   
 
@@ -93,9 +94,10 @@
     // ADD THE DATA
     osmb.addGeoJSON(geojson);
 
+
     // HIGHLIGHT EVENT LISTENER
     map.on('pointermove', function(e) {
-      var id = osmb.getTarget(e.x-63, e.y-63);
+     var id = osmb.getTarget(e.x-63, e.y-63);
 
       if (id) {
         document.body.style.cursor = 'pointer';

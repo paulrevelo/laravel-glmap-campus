@@ -20,13 +20,13 @@ class CreateForeignKey extends Migration
                         ->onUpdate('restrict');
         });
 
-        Schema::table('buildings', function(Blueprint $table) {
-            $table->foreign('bpoly_id')
-                        ->references('id')
-                        ->on('building_polies')
-                        ->onDelete('restrict')
-                        ->onUpdate('restrict');
-        });
+        // Schema::table('buildings', function(Blueprint $table) {
+        //     $table->foreign('bpoly_id')
+        //                 ->references('id')
+        //                 ->on('building_polies')
+        //                 ->onDelete('restrict')
+        //                 ->onUpdate('restrict');
+        // });
     }
 
     /**
@@ -40,9 +40,9 @@ class CreateForeignKey extends Migration
             $table->dropForeign('users_role_id_foreign');
         });
 
-        Schema::table('buildings', function(Blueprint $table) {
-            $table->dropForeign('buildings_bpoly_id_foreign');
-        });
+        // Schema::table('buildings', function(Blueprint $table) {
+        //     $table->dropForeign('buildings_bpoly_id_foreign');
+        // });
 
 
     }
