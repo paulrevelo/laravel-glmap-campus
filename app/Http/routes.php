@@ -35,10 +35,6 @@ Route::group(['middleware' => ['web']], function () {
 
 	//Backend Routes
 
-	// Route::controller('events', 'EventDatatablesController', [
- //    'anyData'  => 'datatables.data2',
- //    'getIndex' => 'datatables2',
-	// ]);
 
 	Route::resource('events','EventController');
 
@@ -46,30 +42,15 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::resource('buildings/create','BuildingController@buildings_create_polygon');
 
-	Route::resource('buildings/{{$building->id}}/edit','BuildingController@buildings_edit_polygon');
-
 	Route::resource('events/create','EventController@events_create_polygon');
 
-	Route::resource('map-editor','BuildingController@index_map_editor');
+	//Route::resource('buildings/{{$building->id}}/edit','BuildingController@buildings_edit_polygon');
+
+	//Route::resource('map-editor','BuildingController@index_map_editor');
 
 	Route::resource('user', 'UserController');
 
 	Route::get('/index', 'BuildingController@polygon_index');
-
-	// Route::resource('buildings', 'BuildingController');
-	// add building backend routes
-
-	// Route::controller('buildings', 'BuildingDatatablesController', [
- //    'anyData'  => 'datatables.data',
- //    'getIndex' => 'datatables',
-	// ]);
-
-	
-	//add user backend routes
-
-	
-
-	//Route::get('/map-editor', 'BuildingController@polygon_map_editor');
 
 /*	
 	// Admin

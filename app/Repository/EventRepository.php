@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Event;
 use App\Building;
 
 class EventRepository extends BaseRepository{
@@ -30,5 +29,4 @@ class EventRepository extends BaseRepository{
     {
         $this->$building->toJSON();
     }
-
 }

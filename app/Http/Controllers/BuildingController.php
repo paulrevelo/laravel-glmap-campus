@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repository\BuildingRepository;
-use App\Repository\EventRepository;
 use App\Http\Requests;
 
 use App\Building;
@@ -13,21 +12,13 @@ use Session;
 
 class BuildingController extends Controller
 {
-    //
-    /**
-	 * The pagination number.
-	 *
-	 * @var int
-	 */
 	protected $nbrPages;
 
 	protected $buildings_show_polygons_gestion;
 
 	public function __construct(
-		EventRepository $buildings_show_events_gestion,
 		BuildingRepository $buildings_show_polygons_gestion)
 	{
-		$this->buildings_show_events_gestion = $buildings_show_events_gestion;
 		$this->buildings_show_polygons_gestion = $buildings_show_polygons_gestion;
 		$this->nbrPages = 50;
 	}	
@@ -131,10 +122,4 @@ class BuildingController extends Controller
 
         return redirect('buildings');
     }
-
-	public function search($id)
-	{
-
-	}
-	
 }

@@ -84,7 +84,6 @@
   @include('main.scripts.js-editgl')
 
   <script>
-  
     //color picker with addon
     $(".my-colorpicker2").colorpicker();
 

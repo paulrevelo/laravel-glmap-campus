@@ -17,26 +17,38 @@
           </div><!-- /.box-header -->
 
           <div class="box-body">
-            <h4><b>Name</b></h4>
-            <p>{{ $event->name }}</p>
-            <hr>
-            <h4><b>Description</b></h4>
-            <p>{{ $event->description }}</p>
-            <hr>
-            <h4><b>Location</b></h4>
-            <p>{{ $event->location }}</p>
-            <hr>
-            <h4><b>Schedule</b></h4>
-            <p>{{ $event->schedule }}</p>
+            <div class="form-group col-md-12">
+              <label style="font-size:20px;">Name</label>
+              <p>{{ $event->name }}</p>
+            </div>
 
+            <div class="form-group col-md-12">
+              <label style="font-size:20px;">Description</label>
+              <p>{{ $event->description }}</p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label style="font-size:20px;">Location</label>
+              <p>{{ $event->location }}</p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label style="font-size:20px;">Room</label>
+              <p>{{ $event->room }}</p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label style="font-size:20px;">Date</label>
+              <p>{{ $event->date }}</p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label style="font-size:20px;">Time</label>
+              <p>{{ $event->time }}</p>
+            </div>
           </div><!-- /.box-body -->
         </div><!-- /.box -->
 
-      </div>
-
-      <div class="col-md-6">
-        <div class="box box-success">
-        </div>
       </div>
     </div>
 @stop

@@ -13,28 +13,14 @@ use Session;
 
 class EventController extends Controller
 {
-    //
-
-    /**
-	 * The pagination number.
-	 *
-	 * @var int
-	 */
-	// protected $nbrPages;
-	
-	/**
-		 * The EventRepository instance.
-	 *
-	 * @var App\Repositories\EventRepository
-	 */
 	protected $nbrPages;
 
-	protected $event_gestion;
+	protected $buildings_show_events_gestion;
 
 	public function __construct(
-		EventRepository $event_gestion)
+		EventRepository $buildings_show_events_gestion)
 	{
-		$this->event_gestion = $event_gestion;
+		$this->buildings_show_events_gestion = $buildings_show_events_gestion;
 		$this->nbrPages = 50;
 	}
 
@@ -47,7 +33,7 @@ class EventController extends Controller
 
 	public function events_create_polygon()
 	{
-		$events = $this->event_gestion->index($this->nbrPages);
+		$events = $this->buildings_show_events_gestion->index($this->nbrPages);
 
 		$links = $events->render();
 
@@ -103,9 +89,4 @@ class EventController extends Controller
 
         return redirect('events');
     }
-
-	public function search($id)
-	{
-
-	}
 }

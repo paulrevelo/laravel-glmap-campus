@@ -35,17 +35,17 @@
             <!-- Optionally, you can add icons to the links -->
             <li>
               <a href="{{ url('index') }}">
-                <i class="fa fa-home fa-fw"></i>
-                <span>Home</span>
+                <i class="fa fa-map fa-fw"></i>
+                <span>Map</span>
               </a>
             </li>
 
-            <li>
+<!--             <li>
               <a href="{{ url('map-editor') }}">
                 <i class="fa fa-map fa-fw"></i> 
                 <span>Map Editor</span>
               </a>
-            </li>
+            </li> -->
 
             <li>
               <a href="{{ url('buildings') }}">

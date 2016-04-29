@@ -7,6 +7,3 @@
 
 <!-- LEAFLET DRAW -->
 <link rel="stylesheet" type="text/css" href="http://cdn.osmbuildings.org/Leaflet.draw/0.2.0/leaflet.draw.css">
-
-<!-- CUSTOM STYLE -->
-<link href="{{ asset('/css/styles.css') }}" rel="stylesheet" type="text/css" />
