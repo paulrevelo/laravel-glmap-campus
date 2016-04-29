@@ -77,6 +77,7 @@
     <div class="col-md-6">
       <div id="map-canvas" class="box box-solid"></div>
     </div>
+  </div>
 @endsection
 
 @section('added_js_scripts')
@@ -206,25 +207,26 @@
     drawnItems.addLayer(layer);
     });
 
-  // map.on('draw:edited', function (e) {
-  //   var layers = e.layers;
-  //   layers.eachLayer(function (layer) {
-  //     if (layer instanceof L.Polyline) {
-  //       coordinates = [];
-  //       latlngs = layer.getLatLngs();
-  //       for (var i = 0; i < latlngs.length; i++) {
-  //         coordinates.push([latlngs[i].lng, latlngs[i].lat])
-  //       }
+    map.on('draw:edited', function (e) {
+      var layers = e.layers;
+      layers.eachLayer(function (layer) {
+        if (layer instanceof L.Polyline) {
+          coordinates = [];
+          latlngs = layer.getLatLngs();
+          for (var i = 0; i < latlngs.length; i++) {
+            coordinates.push([latlngs[i].lng, latlngs[i].lat])
+          }
 
-  //       var coordinates_result = JSON.stringify(coordinates, null, 4);
-  //       document.getElementById("resultarea").innerHTML = coordinates_result;
-  //     }
-  //       //do whatever you want, most likely save back to db
-  //   });
-  // });
+          coordinates.splice((latlngs.length + 1), 0, [latlngs[0].lng, latlngs[0].lat]); 
 
+          var coordinates_result = JSON.stringify(coordinates, null, 4);
 
+          var final_result = "&#91" + coordinates_result +  "&#93";
 
+          document.getElementById("resultarea").innerHTML = final_result;
+        }
+      });
+    });
   </script>
   
 @endsection

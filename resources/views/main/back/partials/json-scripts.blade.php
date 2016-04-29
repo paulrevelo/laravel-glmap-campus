@@ -11,9 +11,9 @@ var geojson = {
 				},
 				properties: {
 					id: "{{ $building->id }}",
-           			roofColor: "{{ $building->roofcolor }}",
-            		height: {{ $building->height }},
-            		wallColor: "{{ $building->wallcolor }}"
+     			roofColor: "{{ $building->roofcolor }}",
+      		height: {{ $building->height }},
+      		wallColor: "{{ $building->wallcolor }}"
 				}
 			},
 		@endforeach

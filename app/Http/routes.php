@@ -44,7 +44,11 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::resource('buildings','BuildingController');
 
-	Route::resource('buildings/create','BuildingController@buildings_create');
+	Route::resource('buildings/create','BuildingController@buildings_create_polygon');
+
+	//Route::resource('buildings/edit','BuildingController@polygon{$id}');
+
+	Route::resource('building/{$id}/edit', 'BuildingController@buildings_edit($id)');
 
 	Route::resource('map-editor','BuildingController@index_map_editor');
 

@@ -221,16 +221,22 @@
       geojsonLayer.resetStyle(e.target);
     }
 
-    function zoomToFeature(e) {
+    var selectedFeature = null;
+
+    function zoomAndEditToFeature(e) {
       map.fitBounds(e.target.getBounds());
-      //alert(feature.properties.id);
+      if(selectedFeature)
+          selectedFeature.editing.disable();
+          selectedFeature = e.target;
+          e.target.editing.enable();
     }
 
     function onEachFeature(feature, layer) {
+      editableLayers.addLayer(layer);
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        click: zoomToFeature
+        click: zoomAndEditToFeature
       });
 
       if (feature.properties) {
@@ -246,67 +252,9 @@
       }
     }
 
+    var editableLayers = new L.FeatureGroup().addTo(map);
     // SHOW BUILDINGS
     geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
-
-    var drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
-
-    var drawControl = new L.Control.Draw({
-      draw: {
-        position: 'topleft',
-        polygon: {
-          allowIntersection: false,
-          drawError: {
-            color: '#b00b00',
-            timeout: 1000
-          },
-          shapeOptions: {
-            color: '#bada55'
-          },
-          showArea: true
-        },
-        polyline: false,
-        circle: false,
-        rectangle: false,
-        marker: false
-      },
-      edit: {
-        featureGroup: drawnItems
-      }
-    });
-    map.addControl(drawControl);
-
-    map.on('draw:created', function (e) {
-    var type = e.layerType,
-        layer = e.layer;
-
-    if (type === 'polygon') {
-
-      // export the coordinates from the layer
-      coordinates = [];
-      latlngs = layer.getLatLngs();
-      for (var i = 0; i < latlngs.length; i++) {
-          coordinates.push([latlngs[i].lng, latlngs[i].lat])
-      }
-
-      var coordinates_result = JSON.stringify(coordinates, null, 4);
-
-      document.getElementById("resultarea").innerHTML = coordinates_result;
-      $('#add-modal').modal('show');
-    }
-  drawnItems.addLayer(layer);
-  });
-
-  map.on('draw:edited', function (e) {
-    var layers = e.layers;
-    layers.eachLayer(function (layer) {
-      if (layer instanceof L.Polyline) {
-          //Do marker specific actions here
-      }
-        //do whatever you want, most likely save back to db
-    });
-  });
 
   </script>
 @endsection

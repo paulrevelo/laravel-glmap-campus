@@ -46,7 +46,7 @@ class BuildingController extends Controller
 		$buildings = $this->polygon_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
-		
+
 		return view('main.map-editor', compact('buildings', 'links'));
 	}
 
@@ -59,13 +59,22 @@ class BuildingController extends Controller
 		return view('main.index', compact('buildings', 'links'));
 	}
 
-	public function buildings_create()
+	public function buildings_create_polygon()
 	{
 		$buildings = $this->polygon_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
 
 		return view('main.buildings.create', compact('buildings', 'links'));
+	}
+
+	public function buildings_edit($id)
+	{
+		$buildings = $this->polygon_gestion->index($this->nbrPages);
+
+		$links = $buildings->render();
+
+		return view('main.buildings.edit', compact('buildings', 'links'));
 	}
 
 	public function create()

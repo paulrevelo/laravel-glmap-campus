@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('added-css-scripts')
+  @include('main.scripts.css-glscripts')
+  @include('main.scripts.css-editgl')
+@endsection
+
 @section('contentheader_title')
 	Buildings
 @endsection
@@ -64,26 +69,170 @@
             {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
           </div>
           {!! Form::close() !!}
-
-          @if ($errors->any())
-            <ul class="alert alert-danger">
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          @endif
+          
       </div><!-- /.box -->
 
     </div>
 
     <div class="col-md-6">
-      <div class="box box-success">
-      </div>
+      <div id="map-canvas" class="box box-solid"></div>
     </div>
   </div>
 @endsection
 
 @section('added_js_scripts')
-  @include('main.scripts.db-scripts')
+  @include('main.scripts.js-editgl')
+
+  <script>
+  
+    //color picker with addon
+    $(".my-colorpicker2").colorpicker();
+
+   // create map engine 
+    var map = new L.Map('map-canvas');
+    map.setView([8.241354685854704, 124.24403356388211], 17, false);
+
+    new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
+      attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
+    }).addTo(map);
+
+    @include('main.back.partials.json-scripts')
+
+    function style(feature) {
+      return {
+        weight: 2,
+        color: '#222D32',
+        fillOpacity: 0.8,
+        fillColor: '#00A65A'
+      };
+    }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 5,
+        color: 'black'
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera) {
+          layer.bringToFront();
+      }
+    }
+
+    var geojsonLayer;
+
+    function resetHighlight(e) {
+      geojsonLayer.resetStyle(e.target);
+    }
+
+    function zoomAndEditToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+      if(selectedFeature)
+        selectedFeature.editing.disable();
+        selectedFeature = e.target;
+        e.target.editing.enable();
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomAndEditToFeature
+      });
+
+      if (feature.properties) {
+        var popupString = '<div class="popup">';
+        for (var k in feature.properties) {
+            var v = feature.properties[k];
+            popupString += k + ': ' + v + '<br>';
+        }
+        popupString += '</div>';
+        layer.bindPopup(popupString, {
+            maxHeight: 200
+        });
+      }
+    }
+
+    var editableLayers = new L.FeatureGroup().addTo(map);
+
+    // SHOW BUILDINGS
+    geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
+
+    var drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    var drawControl = new L.Control.Draw({
+      draw: {
+        position: 'topleft',
+        polygon: {
+          allowIntersection: false,
+          drawError: {
+            color: '#b00b00',
+            timeout: 1000
+          },
+          shapeOptions: {
+            color: '#bada55'
+          },
+          showArea: true
+        },
+        polygon: false,
+        polyline: false,
+        circle: false,
+        rectangle: false,
+        marker: false
+      },
+      edit: {
+        featureGroup: editableLayers
+      }
+    });
+    map.addControl(drawControl);
+
+    map.on('draw:created', function (e) {
+    var type = e.layerType,
+        layer = e.layer;
+
+    if (type === 'polygon') {
+
+      // export the coordinates from the layer
+      coordinates = [];
+      latlngs = layer.getLatLngs();
+      for (var i = 0; i < latlngs.length; i++) {
+        coordinates.push([latlngs[i].lng, latlngs[i].lat])
+      }
+
+      coordinates.splice((latlngs.length + 1), 0, [latlngs[0].lng, latlngs[0].lat]); 
+
+      var coordinates_result = JSON.stringify(coordinates, null, 4);
+
+      var final_result = "&#91" + coordinates_result +  "&#93";
+
+      document.getElementById("resultarea").innerHTML = final_result;
+
+      }
+    drawnItems.addLayer(layer);
+    });
+
+    map.on('draw:edited', function (e) {
+      var layers = e.layers;
+      layers.eachLayer(function (layer) {
+        if (layer instanceof L.Polyline) {
+          coordinates = [];
+          latlngs = layer.getLatLngs();
+          for (var i = 0; i < latlngs.length; i++) {
+            coordinates.push([latlngs[i].lng, latlngs[i].lat])
+          }
+
+          coordinates.splice((latlngs.length + 1), 0, [latlngs[0].lng, latlngs[0].lat]); 
+
+          var coordinates_result = JSON.stringify(coordinates, null, 4);
+
+          var final_result = "&#91" + coordinates_result +  "&#93";
+
+          document.getElementById("resultarea").innerHTML = final_result;
+        }
+      });
+    });
+  </script>
   
 @endsection

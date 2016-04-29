@@ -107,5 +107,9 @@
 	color: white;
 }
 
+textarea.form-control {
+  height: 100%;
+}
+
 
 
