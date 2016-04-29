@@ -2,42 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\EventRepository;
 use App\Http\Requests;
 
 use App\Event;
-use App\Building;
 use Illuminate\Http\Request;
 use Session;
 
 
 class EventController extends Controller
 {
-	protected $nbrPages;
-
-	protected $buildings_show_events_gestion;
-
-	public function __construct(
-		EventRepository $buildings_show_events_gestion)
-	{
-		$this->buildings_show_events_gestion = $buildings_show_events_gestion;
-		$this->nbrPages = 50;
-	}
 
 	public function index()
 	{
-		$events = Event::paginate(15);
+		$events = Event::all();
 
 		return view('main.events.index',compact('events'));
-	}
-
-	public function events_create_polygon()
-	{
-		$events = $this->buildings_show_events_gestion->index($this->nbrPages);
-
-		$links = $events->render();
-
-		return view('main.events.create', compact('events', 'links'));
 	}
 
 	public function create()

@@ -88,6 +88,7 @@
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
     }).addTo(map);
 
+    // GEOJSON DATA
     @include('main.back.partials.json-scripts')
 
     function style(feature) {

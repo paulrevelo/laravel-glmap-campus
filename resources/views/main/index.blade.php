@@ -45,7 +45,9 @@
           <h4 class="modal-title" id="myModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
-          ...
+        @foreach($buildings as $building)
+          Hello,{{ $building->name }}.
+        @endforeach
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,6 +97,7 @@
         if (id) {
           document.body.style.cursor = 'pointer';
           osmb.highlight(id, '#f08000');
+          
         } else {
           document.body.style.cursor = 'default';
           osmb.highlight(null);

@@ -36,16 +36,16 @@
             <li>
               <a href="{{ url('index') }}">
                 <i class="fa fa-map fa-fw"></i>
-                <span>Map</span>
+                <span>Map with 3D Buildings</span>
               </a>
             </li>
 
-<!--             <li>
+             <li>
               <a href="{{ url('map-editor') }}">
                 <i class="fa fa-map fa-fw"></i> 
-                <span>Map Editor</span>
+                <span>Map with Events</span>
               </a>
-            </li> -->
+            </li> 
 
             <li>
               <a href="{{ url('buildings') }}">

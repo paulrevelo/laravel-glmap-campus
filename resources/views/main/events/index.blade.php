@@ -54,7 +54,6 @@
             </tbody>
 
           </table>
-          <div class="pagination"> {!! $events->render() !!} </div>
         </div><!-- /.box-body -->
       </div><!-- /.box -->
 

@@ -89,11 +89,15 @@
 
    // create map engine 
     var map = new L.Map('map-canvas');
+    
     map.setView([8.241354685854704, 124.24403356388211], 17, false);
 
     new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
     }).addTo(map);
+
+    // GEOJSON DATA
+    @include('main.back.partials.json-scripts')
 
     function style(feature) {
       return {

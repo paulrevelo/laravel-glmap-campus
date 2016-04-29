@@ -31,26 +31,25 @@ Route::group(['middleware' => ['web']], function () {
 	]);
 	Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
-	/* testing routes */
-
-	//Backend Routes
-
+	Route::get('/index', 'BuildingController@polygon_index');
 
 	Route::resource('events','EventController');
 
+	Route::get('events/create','BuildingController@events_create_polygon');
+
 	Route::resource('buildings','BuildingController');
 
-	Route::resource('buildings/create','BuildingController@buildings_create_polygon');
+	Route::get('buildings/create','BuildingController@buildings_create_polygon');
 
-	Route::resource('events/create','EventController@events_create_polygon');
+	Route::get('buildings/edit','BuildingController@buildings_edit_polygon');
 
-	//Route::resource('buildings/{{$building->id}}/edit','BuildingController@buildings_edit_polygon');
-
-	//Route::resource('map-editor','BuildingController@index_map_editor');
+	Route::resource('map-editor','BuildingController@index_map_editor');
 
 	Route::resource('user', 'UserController');
 
-	Route::get('/index', 'BuildingController@polygon_index');
+	
+
+	//Route::resource('buildings/{{$building->id}}/edit','BuildingController@buildings_edit_polygon');
 
 /*	
 	// Admin
