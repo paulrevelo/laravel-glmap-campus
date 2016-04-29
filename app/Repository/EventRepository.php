@@ -2,39 +2,23 @@
 
 namespace App\Repository;
 
-use App\Model\Event;
+use App\Event;
+use App\Building;
 
 class EventRepository extends BaseRepository{
 
-		/**
-	 * Create a new BuildingRepository instance.
-	 *
-	 * @param  App\Models\Event $Event
-	 * @return void
-	 */
-	public function __construct(Event $event)
+	public function __construct(Building $building)
 	{
-		$this->model = $event;
+		$this->model = $building;
 	}
 
-	    /**
-     * Create a query for Post.
-     *
-     * @return Illuminate\Database\Eloquent\Builder
-     */
     private function queryActiveWithUserOrderByDate()
     {
         return $this->model
-			->select('id', 'name', 'description', 'location', 'schedule')
+            ->select('id', 'name', 'description', 'height', 'roofcolor', 'wallcolor', 'polygon')
                 ->latest();
     }
 
-	 /**
-     * Get event collection.
-     *
-     * @param  int  $n
-     * @return Illuminate\Support\Collection
-     */
     public function index($n)
     {
         $query = $this->queryActiveWithUserOrderByDate();
@@ -42,13 +26,9 @@ class EventRepository extends BaseRepository{
         return $query->paginate($n);
     }
 
-	public function save()
-	{
-		
-	}
-
-    public function search()
+	public function allJSON()
     {
-        
+        $this->$building->toJSON();
     }
+
 }

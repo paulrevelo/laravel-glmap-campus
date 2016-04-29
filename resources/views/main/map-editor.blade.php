@@ -226,9 +226,9 @@
     function zoomAndEditToFeature(e) {
       map.fitBounds(e.target.getBounds());
       if(selectedFeature)
-          selectedFeature.editing.disable();
-          selectedFeature = e.target;
-          e.target.editing.enable();
+        selectedFeature.editing.disable();
+        selectedFeature = e.target;
+        e.target.editing.enable();
     }
 
     function onEachFeature(feature, layer) {

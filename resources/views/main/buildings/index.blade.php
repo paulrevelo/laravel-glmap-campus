@@ -2,6 +2,7 @@
 
 @section('contentheader_title')
 	Buildings
+
 @endsection
 
 @section('main-content')
@@ -28,7 +29,8 @@
                 <th>Roof Color</th>
                 <th>Wall Color</th>
                 <th>Polygon</th>
-                <th colspan="2">Action</th>                
+                <th>Actions</th> 
+                <th></th>               
               </tr>
             </thead>
 
@@ -42,17 +44,16 @@
                       <td>{{ $building->roofcolor }}</td>
                       <td>{{ $building->wallcolor }}</td>
                       <td>{{ $building->polygon }}</td>
-                      <td><a href="{{route('buildings.edit',$building->id)}}" class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>Edit</a></td>
+                      <td><a href="{{route('buildings.edit',$building->id)}}" class="btn btn-default btn-md"></i>Edit</a></td>
                       <td>
                           {!! Form::open(['method' => 'DELETE', 'route'=>['buildings.destroy', $building->id]]) !!}
-                          {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                          {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-md']) !!}
                           {!! Form::close() !!}
                       </td>
                   </tr>
               @endforeach
             </tbody>
           </table>
-          <div class="pagination"> {!! $buildings->render() !!} </div>
         </div><!-- /.box-body -->
       </div><!-- /.box -->
 
@@ -62,10 +63,23 @@
 
 @section('added_js_scripts')
   @include('main.scripts.db-scripts')
-
- <script>
+  <script>
   $(function() {
-    $('#buildings-table').DataTable();
+    $('#buildings-table').DataTable({    
+      ordering: true,
+      searching: true,
+      paging: true,
+      autoWidth: false,
+      pagingType: "full_numbers",
+      columnDefs: [ {
+        targets: 6,
+        render: function ( data, type, row ) {
+            return data.length > 10 ?
+              data.substr( 0, 10 ) +'…' :
+              data;
+        }
+      }]
+    });
   });
   </script>
 @endsection

@@ -25,12 +25,12 @@
             
             <div class="form-group col-md-9">
             {!! Form::label('name', 'Name: ') !!}
-              {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
+              {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group col-md-3">
               {!! Form::label('height', 'Height: ') !!}
-                {!! Form::text('height', null, ['class' => 'form-control', 'id' => 'height', 'maxlength' => '4', 'size' => '4' ]) !!}
+                {!! Form::text('height', null, ['class' => 'form-control', 'maxlength' => '4', 'size' => '4' ]) !!}
             </div>
 
             <div class="form-group col-md-6">
@@ -64,11 +64,12 @@
             </div> 
 
         </div><!-- /.box-body -->
-          <div class="box-footer">
-            <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
-            {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
-            {!! Form::close() !!}
-          </div>
+
+        <div class="box-footer">
+          <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
+          {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
+          {!! Form::close() !!}
+        </div>
           
       </div><!-- /.box -->
 

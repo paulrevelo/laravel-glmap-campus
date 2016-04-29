@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web']], function () {
 	    //
 
 	Route::get('/', [
-		'uses' => 'HomeController@index', 
+		'uses' => 'BuildingController@index2', 
 		'as' => 'home'
 	]);
 	Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
@@ -46,9 +46,9 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::resource('buildings/create','BuildingController@buildings_create_polygon');
 
-	//Route::resource('buildings/edit','BuildingController@polygon{$id}');
+	Route::resource('buildings/{{$building->id}}/edit','BuildingController@buildings_edit_polygon');
 
-	Route::resource('building/{$id}/edit', 'BuildingController@buildings_edit($id)');
+	Route::resource('events/create','EventController@events_create_polygon');
 
 	Route::resource('map-editor','BuildingController@index_map_editor');
 

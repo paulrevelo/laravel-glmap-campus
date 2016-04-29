@@ -16,8 +16,10 @@ class CreateEventsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name', 255);
             $table->longText('description');
-            $table->mediumText('location');
-            $table->dateTime('schedule');
+            $table->longText('location');
+            $table->string('room', 255);
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }

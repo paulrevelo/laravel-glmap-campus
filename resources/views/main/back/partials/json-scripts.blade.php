@@ -10,10 +10,12 @@ var geojson = {
 					coordinates: {{ $building->polygon }}
 				},
 				properties: {
-					id: "{{ $building->id }}",
-     			roofColor: "{{ $building->roofcolor }}",
-      		height: {{ $building->height }},
-      		wallColor: "{{ $building->wallcolor }}"
+				id: "{{ $building->id }}",
+				name: "{{ $building->name }}",
+				description: "{{ $building->description }}",
+      			height: {{ $building->height }},
+      			roofColor: "{{ $building->roofcolor }}",
+      			wallColor: "{{ $building->wallcolor }}"
 				}
 			},
 		@endforeach

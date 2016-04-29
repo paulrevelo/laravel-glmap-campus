@@ -96,8 +96,6 @@
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
     }).addTo(map);
 
-    @include('main.back.partials.json-scripts')
-
     function style(feature) {
       return {
         weight: 2,

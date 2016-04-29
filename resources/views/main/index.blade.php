@@ -65,28 +65,23 @@
 
   <script>
   
+    // BASEMAP
     var map = new GLMap('map-canvas', {
-      position: {latitude: 8.241354685854704, longitude: 124.24403356388211},
-      zoom: 18,
-      minZoom: 15,
-      maxZoom: 22,
+      position: {latitude: 8.241097198309157, longitude: 124.24392879009247},
+      zoom: 17.8,
       tilt: 45
     });
 
     // OSM BUILDINGS
     var osmb = new OSMBuildings({
-      minZoom: 15,
-      maxZoom: 22,
-      effects: ['shadows'],
-      attribution: '© 3D <a href=http://osmbuildings.org/copyright/>OSM Buildings</a>'
-    }).addTo(map);   
+      minZoom: 17,
+      maxZoom: 20,
+      effects: ['shadows']
+    }).addTo(map);     
 
     // BASEMAP TILELAYER
-    osmb.addMapTiles(
-      'http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
-    {
-      attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'
-    };
+    osmb.addMapTiles('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
+    {attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'};
 
     // GEOJSON DATA
     @include('main.back.partials.json-scripts')
@@ -94,30 +89,28 @@
     // ADD THE DATA
     osmb.addGeoJSON(geojson);
 
-
-    // HIGHLIGHT EVENT LISTENER
+    // HIGHLIGHT
     map.on('pointermove', function(e) {
-     var id = osmb.getTarget(e.x-63, e.y-63);
-
-      if (id) {
-        document.body.style.cursor = 'pointer';
-        osmb.highlight(id, '#282828');
-      } else {
-        document.body.style.cursor = 'default';
-        osmb.highlight(null);
-      }
+      var id = osmb.getTarget(e.x, e.y, function(id) {
+        if (id) {
+          document.body.style.cursor = 'pointer';
+          osmb.highlight(id, '#f08000');
+        } else {
+          document.body.style.cursor = 'default';
+          osmb.highlight(null);
+        }
+      });
     });
 
-    map.on('pointerdown', function(e){
-     var id = osmb.getTarget(e.x-63, e.y-63);
-
-      if (id) {
-        $('#myModal').modal('show');
-        //window.alert("Building ID:  + id);
-        //window.location.href = "-building=" + id;
-      } else {
-        
-      }
+    // SHOW MODAL
+    map.on('pointerdown', function(e) {
+      var id = osmb.getTarget(e.x, e.y, function(id) {
+        if (id) {
+          $('#myModal').modal('show');
+        } else {
+          
+        }
+      });
     });
 
     // CONTROL BUTTONS

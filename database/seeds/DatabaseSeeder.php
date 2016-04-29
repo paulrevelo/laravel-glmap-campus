@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Event, App\Model\Role, App\Model\User, App\Model\Building, App\Model\BuildingPoly;
+use App\Event, App\Role, App\User, App\Building;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,33 +17,46 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         Event::create([
-        	'name' => 'Palakasan2017: Basketball-Men SetGame 1',
-        	'description' => '1. SET vs CSM <br> and so on...',
-        	'location' => 'IIT Gymnasium',
-        	'schedule' => '2017-08-01 08:00:00'
+        	'name' => 'The Jungle Book',
+        	'description' => 'The man-cub Mowgli flees the jungle after a threat from the tiger Shere Khan. Guided by Bagheera the panther and the bear Baloo, Mowgli embarks on a journey of self-discovery, though he also meets creatures who dont have his best interests at heart.',
+        	'location' => '[ 124.24465298652649, 8.23991593886458 ]',
+          'room' => 'Room 101',
+        	'date' => '2017-08-01',
+          'time' => '08:00:00'
         ]);
 
         Event::create([
-        	'name' => 'GDG CrashCourse: Android',
-        	'description' => 'Introductory Program for Google Special Class',
-        	'location' => 'IIT MICeL',
-        	'schedule' => '2017-10-01 08:00:00'
+        	'name' => 'Captain America: Civil War',
+        	'description' => 'Political interference in the Avengers activities causes a rift between former allies Captain America and Iron Man.',
+        	'location' => '[ 114.24465298652649, 12.23991593886458 ]',
+          'room' => 'Room 102',
+          'date' => '2017-08-01',
+          'time' => '08:00:00' 
         ]);
 
-        Role::create([
-            'title' => 'Administrator',
-            'slug' => 'admin'
+        Event::create([
+          'name' => 'Batman v Superman: Dawn of Justice',
+          'description' => 'Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, while the world wrestles with what kind of a hero it really needs.',
+          'location' => '[ 134.24465298652649, 20.23991593886458 ]',
+          'room' => 'Room 103',
+          'date' => '2017-08-01',
+          'time' => '08:00:00'
         ]);
 
-        Role::create([
-            'title' => 'Redactor',
-            'slug' => 'redac'
-        ]);
+        // Role::create([
+        //     'title' => 'Administrator',
+        //     'slug' => 'admin'
+        // ]);
 
-        Role::create([
-            'title' => 'User',
-            'slug' => 'user'
-        ]);
+        // Role::create([
+        //     'title' => 'Redactor',
+        //     'slug' => 'redac'
+        // ]);
+
+        // Role::create([
+        //     'title' => 'User',
+        //     'slug' => 'user'
+        // ]);
 
         User::create([
             'username' => 'GreatAdmin',

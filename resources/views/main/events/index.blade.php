@@ -8,68 +8,6 @@
 	<div class="row">
     <div class="col-md-12">
 
-      <!-- ADD MODAL -->
-      <!-- <div class="modal fade" id="add-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Add New Building</h4>
-            </div>
-            <div class="modal-body row">
-              
-              {!! Form::open(['url' => 'main/events/index']) !!}
-            
-                <div class="form-group col-md-12 {{ $errors->has('event-name') ? 'has-error' : ''}}">
-                {!! Form::label('event-name', 'Name: ') !!}
-                  {!! Form::text('event-name', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'event-name']) !!}
-                  {!! $errors->first('event-name', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="form-group col-md-12 {{ $errors->has('description') ? 'has-error' : ''}}">
-                {!! Form::label('description', 'Description: ') !!}
-                  {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required', 'rows' => '5']) !!}
-                  {!! $errors->first('description', '<p class="help-block">:message</p>') !!}   
-                </div> 
-
-                <div class="form-group col-md-12 {{ $errors->has('location') ? 'has-error' : ''}}">
-                {!! Form::label('location', 'Location: ') !!}
-                  {!! Form::text('location', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'location']) !!}
-                  {!! $errors->first('location', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="form-group col-md-12 {{ $errors->has('schedule') ? 'has-error' : ''}}">
-                {!! Form::label('schedule', 'Date: ') !!}
-                  {!! Form::text('schedule', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                  {!! $errors->first('schedule', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="form-group col-md-6 {{ $errors->has('time') ? 'has-error' : ''}}">
-                {!! Form::label('time', 'Time: ') !!}
-                  {!! Form::text('time', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                  {!! $errors->first('time', '<p class="help-block">:message</p>') !!}
-                </div> 
-
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
-            </div>
-            {!! Form::close() !!}
-
-            @if ($errors->any())
-              <ul class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-              </ul>
-            @endif
-
-          </div>
-        </div>
-      </div> -->
-
       <div class="box box-success">
         <div class="box-header">
           <h3 class="box-title">Events</h3>
@@ -87,29 +25,34 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Location</th>
-                <th>Schedule</th>
-                <th colspan="2">Actions</th>             
+                <th>Room</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th> 
+                <th></th>              
               </tr>
             </thead>
+            
             <tbody>
-            {{-- */$x=0;/* --}}
-            @foreach($events as $event)
-                {{-- */$x++;/* --}}
+              @foreach($events as $event)
                 <tr>
-                    <td>{{ $x }}</td>
-                    <td><a href="{{ url('events', $event->id) }}">{{ $event->name }}</a></td>
-                    <td>{{ $event->description }}</td>
-                    <td>{{ $event->location }}</td>
-                    <td>{{ $event->schedule }}</td>
-                    <td><a href="{{route('events.edit',$event->id)}}" class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>Edit</a></td>
-                    <td>
-                        {!! Form::open(['method' => 'DELETE', 'route'=>['events.destroy', $event->id]]) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                        {!! Form::close() !!}
-                    </td>
+                  <td>{{ $event->id }}</td>
+                  <td><a href="{{ url('events', $event->id) }}">{{ $event->name }}</a></td>
+                  <td>{{ $event->description }}</td>
+                  <td>{{ $event->location }}</td>
+                  <td>{{ $event->room }}</td>
+                  <td>{{ $event->date }}</td>
+                  <td>{{ $event->time }}</td>
+                  <td><a href="{{route('events.edit',$event->id)}}" class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>Edit</a></td>
+                  <td>
+                      {!! Form::open(['method' => 'DELETE', 'route'=>['events.destroy', $event->id]]) !!}
+                      {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                      {!! Form::close() !!}
+                  </td>
                 </tr>
-            @endforeach
+              @endforeach
             </tbody>
+
           </table>
           <div class="pagination"> {!! $events->render() !!} </div>
         </div><!-- /.box-body -->
@@ -124,7 +67,21 @@
   
   <script>
   $(function() {
-    $('#events-table').DataTable();
+    $('#events-table').DataTable({    
+      ordering: true,
+      searching: true,
+      paging: true,
+      autoWidth: false,
+      pagingType: "full_numbers",
+      columnDefs: [ {
+        targets: 2,
+        render: function ( data, type, row ) {
+            return data.length > 10 ?
+              data.substr( 0, 10 ) +'…' :
+              data;
+        }
+      }]
+    });
   });
   </script>
 

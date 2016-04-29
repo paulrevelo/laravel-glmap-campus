@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\BuildingRepository;
-use App\Repository\PolygonRepository;
+use App\Repository\EventRepository;
 use App\Http\Requests;
 
 use App\Building;
@@ -21,15 +21,14 @@ class BuildingController extends Controller
 	 */
 	protected $nbrPages;
 
-	protected $building_gestion;
-	protected $polygon_gestion;
+	protected $buildings_show_polygons_gestion;
 
 	public function __construct(
-		BuildingRepository $building_gestion,
-		PolygonRepository $polygon_gestion)
+		EventRepository $buildings_show_events_gestion,
+		BuildingRepository $buildings_show_polygons_gestion)
 	{
-		$this->building_gestion = $building_gestion;
-		$this->polygon_gestion = $polygon_gestion;
+		$this->buildings_show_events_gestion = $buildings_show_events_gestion;
+		$this->buildings_show_polygons_gestion = $buildings_show_polygons_gestion;
 		$this->nbrPages = 50;
 	}	
 
@@ -43,7 +42,7 @@ class BuildingController extends Controller
 
 	public function index_map_editor()
 	{
-		$buildings = $this->polygon_gestion->index($this->nbrPages);
+		$buildings = $this->buildings_show_polygons_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
 
@@ -52,7 +51,7 @@ class BuildingController extends Controller
 
 	public function polygon_index()
 	{
-		$buildings = $this->polygon_gestion->index($this->nbrPages);
+		$buildings = $this->buildings_show_polygons_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
 
@@ -61,20 +60,28 @@ class BuildingController extends Controller
 
 	public function buildings_create_polygon()
 	{
-		$buildings = $this->polygon_gestion->index($this->nbrPages);
+		$buildings = $this->buildings_show_polygons_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
 
 		return view('main.buildings.create', compact('buildings', 'links'));
 	}
 
-	public function buildings_edit($id)
+	public function buildings_edit_polygon()
 	{
-		$buildings = $this->polygon_gestion->index($this->nbrPages);
+		$buildings = $this->buildings_show_polygons_gestion->index($this->nbrPages);
 
 		$links = $buildings->render();
 
 		return view('main.buildings.edit', compact('buildings', 'links'));
+	}
+
+	public function index2()
+	{
+
+		$buildings = Building::all();
+
+		return view('home',compact('buildings'));
 	}
 
 	public function create()

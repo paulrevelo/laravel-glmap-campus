@@ -6,6 +6,7 @@ use App\Repository\EventRepository;
 use App\Http\Requests;
 
 use App\Event;
+use App\Building;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,20 +27,31 @@ class EventController extends Controller
 	 *
 	 * @var App\Repositories\EventRepository
 	 */
-	// protected $event_gestion;
+	protected $nbrPages;
 
-	// public function __construct(
-	// 	EventRepository $event_gestion)
-	// {
-	// 	$this->event_gestion = $event_gestion;
-	// 	$this->nbrPages = 2;
-	// }	
+	protected $event_gestion;
+
+	public function __construct(
+		EventRepository $event_gestion)
+	{
+		$this->event_gestion = $event_gestion;
+		$this->nbrPages = 50;
+	}
 
 	public function index()
 	{
 		$events = Event::paginate(15);
 
 		return view('main.events.index',compact('events'));
+	}
+
+	public function events_create_polygon()
+	{
+		$events = $this->event_gestion->index($this->nbrPages);
+
+		$links = $events->render();
+
+		return view('main.events.create', compact('events', 'links'));
 	}
 
 	public function create()
@@ -49,11 +61,10 @@ class EventController extends Controller
 
 	public function store(Request $request)
 	{
-   		$this->validate($request, ['name' => 'required', 'description' => 'required', 'location' => 'required', 'schedule' => 'required']);
 
 	   	Event::create($request->all());
 
-	   	Session::flash('flash_message', 'Event added!');
+	   	//Session::flash('flash_message', 'Event added!');
 
 		return redirect('events');
 	}
@@ -74,13 +85,12 @@ class EventController extends Controller
 	
 	public function update($id, Request $request)
 	{
-   		$this->validate($request, ['name' => 'required', 'description' => 'required', 'location' => 'required', 'schedule' => 'required']);
 
         $event = Event::findOrFail($id);
 
         $event->update($request->all());
 
-        Session::flash('flash_message', 'Event updated!');
+        //Session::flash('flash_message', 'Event updated!');
 
       	return redirect('events');
 	}
@@ -89,7 +99,7 @@ class EventController extends Controller
     {
         Event::destroy($id);
 
-        Session::flash('flash_message', 'Event deleted!');
+        //Session::flash('flash_message', 'Event deleted!');
 
         return redirect('events');
     }
