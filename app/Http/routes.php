@@ -29,6 +29,13 @@ Route::group(['middleware' => ['web']], function () {
 		'uses' => 'BuildingController@index2', 
 		'as' => 'home'
 	]);
+
+	Route::get('buildingdata', 'BuildingController@json');
+
+	Route::get('testmap', function(){
+		return view('maptest');
+	});
+
 	Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
 	Route::get('/index', 'BuildingController@polygon_index');
@@ -39,13 +46,26 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::resource('buildings','BuildingController');
 
+// <<<<<<< HEAD
+// 	Route::get('buildings?search={$search}', [
+// 		'as'=>'search',
+// 		'uses'=>'BuildingController@searchByString($search)'
+// 	]);
+
+// 	Route::resource('buildings/create','BuildingController@buildings_create_polygon');
+
+// 	//Route::resource('buildings/edit','BuildingController@polygon{$id}');
+
+// 	Route::resource('buildings/{$id}/edit', 'BuildingController@buildings_edit($id)');
+// =======
 	Route::get('buildings/create','BuildingController@buildings_create_polygon');
 
 	Route::get('buildings/edit','BuildingController@buildings_edit_polygon');
+//>>>>>>> 584881c48720511a0a9505bbbb693a1ddf27a065
 
 	Route::resource('map-editor','BuildingController@index_map_editor');
 
-	Route::resource('user', 'UserController');
+	// Route::resource('user', 'UserController');
 
 	
 
@@ -108,36 +128,36 @@ Route::group(['middleware' => ['web']], function () {
 	*/
 
 	// User
-	Route::get('user/sort/{role}', 'UserController@indexSort');
+	// Route::get('user/sort/{role}', 'UserController@indexSort');
 
-	Route::get('user/roles', 'UserController@getRoles');
-	Route::post('user/roles', 'UserController@postRoles');
+	// Route::get('user/roles', 'UserController@getRoles');
+	// Route::post('user/roles', 'UserController@postRoles');
 
-	Route::put('userseen/{user}', 'UserController@updateSeen');
+	// Route::put('userseen/{user}', 'UserController@updateSeen');
 
-	Route::resource('user', 'UserController');
+	// Route::resource('user', 'UserController');
 
 
-	// Authentication routes...
-	Route::get('auth/login', 'Auth\AuthController@getLogin');
-	Route::post('auth/login', 'Auth\AuthController@postLogin');
-	Route::get('auth/logout', 'Auth\AuthController@getLogout');
-	Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
+	// // Authentication routes...
+	// Route::get('auth/login', 'Auth\AuthController@getLogin');
+	// Route::post('auth/login', 'Auth\AuthController@postLogin');
+	// Route::get('auth/logout', 'Auth\AuthController@getLogout');
+	// Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
 
-	// Resend routes...
-	Route::get('auth/resend', 'Auth\AuthController@getResend');
+	// // Resend routes...
+	// Route::get('auth/resend', 'Auth\AuthController@getResend');
 
-	// Registration routes...
-	Route::get('auth/register', 'Auth\AuthController@getRegister');
-	Route::post('auth/register', 'Auth\AuthController@postRegister');
+	// // Registration routes...
+	// Route::get('auth/register', 'Auth\AuthController@getRegister');
+	// Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-	// Password reset link request routes...
-	Route::get('password/email', 'Auth\PasswordController@getEmail');
-	Route::post('password/email', 'Auth\PasswordController@postEmail');
+	// // Password reset link request routes...
+	// Route::get('password/email', 'Auth\PasswordController@getEmail');
+	// Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-	// Password reset routes...
-	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-	Route::post('password/reset', 'Auth\PasswordController@postReset');
+	// // Password reset routes...
+	// Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	// Route::post('password/reset', 'Auth\PasswordController@postReset');
 /*	
 */
 });

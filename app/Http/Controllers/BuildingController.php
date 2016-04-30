@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests;
 
 use App\Building;
@@ -13,12 +14,21 @@ use Session;
 class BuildingController extends Controller
 {
 
+	public function index_2()
+	{
+
+		$buildings = Building::all();
+
+		return view('home',compact('buildings'));
+	}
+
 	public function index()
 	{
 		$buildings = Building::all();
 
 		return view('main.buildings.index',compact('buildings'));
 	}
+
 
 	public function index2()
 	{
@@ -27,6 +37,7 @@ class BuildingController extends Controller
 		$events = Event::all();
 
 		return view('home', compact('buildings', 'events'));
+
 	}
 
 	public function polygon_index()
@@ -37,6 +48,7 @@ class BuildingController extends Controller
 
 		return view('main.index', compact('buildings', 'events'));
 	}
+
 
 	public function index_map_editor()
 	{
@@ -71,6 +83,18 @@ class BuildingController extends Controller
 
 		return view('main.events.create', compact('buildings', 'events'));
 	}
+
+	public function buildings_edit($id)
+	{
+		$buildings = $this->polygon_gestion->index($this->nbrPages);
+		$building = Building::findOrFail($id);
+
+		$links = $buildings->render();
+
+		return view('main.buildings.edit', compact('building','buildings', 'links'));
+	}
+	//end of dead functions
+
 
 	public function create()
 	{
@@ -119,4 +143,34 @@ class BuildingController extends Controller
 
         return redirect('buildings');
     }
+
+	public function searchByString(Request $request)
+	{
+		    // Gets the query string from our form submission 
+		    $query = Request::input('search');
+		    // Returns an array of articles that have the query string located somewhere within 
+		    // our articles titles. Paginates them so we can break up lots of search results.
+		  	$buildings = DB::table('buildings')
+		  		->where('name', 'LIKE', '%' . $query . '%')
+		  		->where('description', 'LIKE', '%' . $query . '%')
+		  			->paginate(15);
+		        
+			// returns a view and passes the view the list of articles and the original query.
+		    return view('main.building.index', compact('buildings', 'links', 'query'));
+
+
+		 // $buildings = $query->where(function($q) use ($search) {
+   //                  $q->where('name', 'like', "%$search%")
+   //                          ->orWhere('description', 'like', "%$search%");
+   //              })->paginate(15);
+		 // $links = $buildings->render();
+
+		 // return view('main.building.index', compact('buildings','links'));
+	}
+
+	public function json(){
+		return Building::all();
+	}
+	
+
 }

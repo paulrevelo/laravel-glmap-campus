@@ -2,7 +2,11 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
+use App\Event, App\User, App\Building;
+=======
 use App\Event, App\Role, App\User, App\Building;
+>>>>>>> 584881c48720511a0a9505bbbb693a1ddf27a065
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,6 +38,9 @@ class DatabaseSeeder extends Seeder
           'time' => '08:00:00' 
         ]);
 
+<<<<<<< HEAD
+                User::create([
+=======
         Event::create([
           'name' => 'Batman v Superman: Dawn of Justice',
           'description' => 'Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, while the world wrestles with what kind of a hero it really needs.',
@@ -59,11 +66,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
+>>>>>>> 584881c48720511a0a9505bbbb693a1ddf27a065
             'username' => 'GreatAdmin',
             'email' => 'admin@la.fr',
             'password' => bcrypt('admin'),
             'seen' => true,
-            'role_id' => 1,
             'confirmed' => true
         ]);  
 

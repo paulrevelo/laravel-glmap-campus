@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('added-css-scripts')
-  @include('main.scripts.css-glscripts')  
+  @include('main.scripts.css-osm')  
 @endsection
 
 @section('contentheader_title')
@@ -63,7 +63,7 @@
 
 @section('added_js_scripts')
 
-  @include('main.scripts.js-glscripts') 
+  @include('main.scripts.js-osm') 
 
   <script>
   
@@ -85,11 +85,53 @@
     osmb.addMapTiles('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
     {attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'};
 
-    // GEOJSON DATA
-    @include('main.back.partials.json-scripts')
 
-    // ADD THE DATA
-    osmb.addGeoJSON(geojson);
+    //Strictly add per call to map
+    var geojson=null;
+    //convert string to array.
+    function convertToArray(string){
+      var array = JSON.parse("" + string +"");
+      return array;
+    }
+    var valid = JSON.stringify(geojson);
+
+    $(function(){
+
+      $.ajax({
+      type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata',
+      success: function(buildings){
+        //console.log(buildings);
+        // console.log('success', building);
+        var features = new Array();
+          $.each(buildings, function(i, building){
+            //console.log(building);
+
+            features[i] = {
+                type: "Feature", 
+                geometry: {
+                  type: "Polygon",
+                  coordinates: convertToArray(building.polygon)
+                },
+                properties: {
+                  id:  building.id,
+                  roofColor: building.roofcolor,
+                  height: building.height,
+                  wallColor: building.wallcolor
+                }
+            }
+        });
+
+       geojson = {
+          type: "FeatureCollection", 
+          features: features
+       }
+      // ADD THE DATA
+      osmb.addGeoJSON(geojson);
+      }
+    });
+  }); //end strictly add
 
     // HIGHLIGHT
     map.on('pointermove', function(e) {

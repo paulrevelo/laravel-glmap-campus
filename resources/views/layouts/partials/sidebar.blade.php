@@ -62,13 +62,6 @@
             </li>
 
             <li>
-              <a href="{{ url('settings') }}">
-                <i class="fa fa-user fa-fw"></i> 
-                <span>About</span>
-              </a>
-            </li>
-
-            <li>
               <a href="{{ url('logout') }}">
                 <i class="fa fa-sign-out fa-fw"></i> 
                 <span>Logout</span>

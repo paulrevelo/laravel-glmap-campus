@@ -101,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @section('scripts')
   @include('layouts.partials.scripts')
-  @include('main.scripts.js-glscripts') 
+  @include('main.scripts.js-osm') 
 @show
 
    
@@ -126,12 +126,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
     osmb.addMapTiles('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
     {attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'};
 
-    // GEOJSON DATA
-    @include('main.back.partials.json-scripts')
+    //Strictly add per call to map
+    var geojson = null;
+    //convert string to array
+    function convertToArray(string){
+      var array = JSON.parse("" + string +"");
+      return array;
+    }
+    var valid = JSON.stringify(geojson);
 
-    // ADD THE DATA
-    osmb.addGeoJSON(geojson);
+    $(function(){
 
+      $.ajax({
+      type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata',
+      success: function(buildings){
+          //console.log(buildings);
+          // console.log('success', building);
+          var features = new Array();
+            $.each(buildings, function(i, building){
+              //console.log(building);
+
+              features[i] = {
+                  type: "Feature", 
+                  geometry: {
+                    type: "Polygon",
+                    coordinates: convertToArray(building.polygon)
+                  },
+                  properties: {
+                    id:  building.id,
+                    roofColor: building.roofcolor,
+                    height: building.height,
+                    wallColor: building.wallcolor
+                  }
+              }
+          });
+
+         geojson = {
+            type: "FeatureCollection", 
+            features: features
+         }
+
+        // SHOW BUILDINGS
+        osmb.addGeoJSON(geojson);
+        }
+      });
+     }); //end strictly add
+    
     // HIGHLIGHT
     map.on('pointermove', function(e) {
       var id = osmb.getTarget(e.x, e.y, function(id) {

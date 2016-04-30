@@ -62,7 +62,7 @@
 @endsection
 
 @section('added_js_scripts')
-  @include('main.scripts.db-scripts')
+  @include('main.scripts.js-database')
   
   <script>
   $(function() {

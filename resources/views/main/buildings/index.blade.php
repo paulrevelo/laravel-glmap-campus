@@ -12,7 +12,18 @@
       <div class="box box-success">
         <div class="box-header">
           <h3 class="box-title">Buildings</h3>
+
+
           <div class="box-tools pull-right">
+
+<!--           {!! Form::open(['method' => 'GET', 'class' => 'form navbar-form searchform']) !!}
+             {!! Form::text('search', null,
+                           array('required',
+                                'class'=>'form-control',
+                                'placeholder'=>'Missing route')) !!}
+              {!! Form::submit('Search', ['class' => 'btn btn-success btn-flat']) !!}
+          {!! Form::close() !!} -->
+          
             <a href="{{url('/buildings/create')}}" class="btn btn-success btn-flat"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Add New Building</a>
           </div>
         </div><!-- /.box-header -->
@@ -62,24 +73,25 @@
 @endsection
 
 @section('added_js_scripts')
-  @include('main.scripts.db-scripts')
+  @include('main.scripts.js-database')
+  
   <script>
-  $(function() {
-    $('#buildings-table').DataTable({    
-      ordering: true,
-      searching: true,
-      paging: true,
-      autoWidth: false,
-      pagingType: "full_numbers",
-      columnDefs: [ {
-        targets: 6,
-        render: function ( data, type, row ) {
-            return data.length > 10 ?
-              data.substr( 0, 10 ) +'…' :
-              data;
-        }
-      }]
+    $(function() {
+      $('#buildings-table').DataTable({    
+        ordering: true,
+        searching: true,
+        paging: true,
+        autoWidth: false,
+        pagingType: "full_numbers",
+        columnDefs: [ {
+          targets: 6,
+          render: function ( data, type, row ) {
+              return data.length > 10 ?
+                data.substr( 0, 10 ) +'…' :
+                data;
+          }
+        }]
+      });
     });
-  });
   </script>
 @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('added-css-scripts')
-  @include('main.scripts.css-glscripts')
-  @include('main.scripts.css-editgl')
+  @include('main.scripts.css-leaflet')
+  @include('main.scripts.css-create')
 @endsection
 
 @section('contentheader_title')
@@ -11,7 +11,7 @@
 
 @section('main-content')
 	<div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
 
       <div class="box box-success">
         <div class="box-header">
@@ -24,49 +24,40 @@
           {!! Form::open(['url' => 'buildings']) !!}
             
             <div class="form-group col-md-9">
-            {!! Form::label('name', 'Name: ') !!}
+            {!! Form::label('name', 'Name') !!}
               {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group col-md-3">
-              {!! Form::label('height', 'Height: ') !!}
+              {!! Form::label('height', 'Height') !!}
                 {!! Form::text('height', null, ['class' => 'form-control', 'maxlength' => '4', 'size' => '4' ]) !!}
             </div>
 
             <div class="form-group col-md-6">
-            {!! Form::label('description', 'Description: ') !!}
-              {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '11']) !!}
+            {!! Form::label('description', 'Description') !!}
+              {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '12']) !!}
             </div>
 
             <div class="form-group col-md-6">
-            {!! Form::label('polygon', 'Coordinates: ') !!}
-              {!! Form::textarea('polygon', null, ['id' => 'resultarea', 'class' => 'form-control', 'rows' => '11']) !!}
+            {!! Form::label('polygon', 'Coordinates') !!}
+              {!! Form::textarea('polygon', null, ['id' => 'resultarea', 'class' => 'form-control', 'rows' => '12', 'readonly']) !!}
             </div> 
 
             <div class="form-group col-md-6">
-              {!! Form::label('wallcolor', 'Wall Color: ') !!}
-              <div class="input-group my-colorpicker2">
-                {!! Form::text('wallcolor', null, ['class' => 'form-control', 'placeholder' => '#ff0000']) !!}
-                <div class="input-group-addon">
-                  <i></i>
-                </div>
-              </div>
+              {!! Form::label('wallcolor', 'Wall Color') !!}
+                {!! Form::text('wallcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff0000']) !!}
             </div>
 
             <div class="form-group col-md-6">
               {!! Form::label('roofcolor', 'Roof Color: ') !!}
-              <div class="input-group my-colorpicker2">
-                {!! Form::text('roofcolor', null, ['class' => 'form-control', 'placeholder' => '#ff8000']) !!}
-                <div class="input-group-addon">
-                  <i></i>
-                </div>
-              </div>
+                {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
             </div> 
 
         </div><!-- /.box-body -->
 
         <div class="box-footer">
-          <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
+
+        <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
           {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
           {!! Form::close() !!}
         </div>
@@ -75,29 +66,35 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-7">
+
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        You cannot edit the building polygon after this, make sure you do this seriously.      
+      </div>
+
       <div id="map-canvas" class="box box-solid"></div>
     </div>
   </div>
 @endsection
 
 @section('added_js_scripts')
-  @include('main.scripts.js-editgl')
+  @include('main.scripts.js-leaflet')
+  @include('main.scripts.js-create')
+
 
   <script>
   
     //color picker with addon
-    $(".my-colorpicker2").colorpicker();
+    $(".my-colorpicker1").colorpicker();
 
    // create map engine 
     var map = new L.Map('map-canvas');
-    map.setView([8.241354685854704, 124.24403356388211], 17, false);
+    map.setView([8.241354685854704, 124.24403356388211], 17.2, false);
 
     new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
     }).addTo(map);
-
-    @include('main.back.partials.json-scripts')
 
     function style(feature) {
       return {
@@ -152,8 +149,54 @@
       }
     }
 
-    // SHOW BUILDINGS
-    geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
+    //Strictly add per call to map
+    var geojson = null;
+    //convert string to array
+    function convertToArray(string){
+      var array = JSON.parse("" + string +"");
+      return array;
+    }
+    var valid = JSON.stringify(geojson);
+
+    $(function(){
+
+      $.ajax({
+      type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata',
+      success: function(buildings){
+        //console.log(buildings);
+        // console.log('success', building);
+        var features = new Array();
+          $.each(buildings, function(i, building){
+            //console.log(building);
+
+            features[i] = {
+                type: "Feature", 
+                geometry: {
+                  type: "Polygon",
+                  coordinates: convertToArray(building.polygon)
+                },
+                properties: {
+                  id:  building.id,
+                  roofColor: building.roofcolor,
+                  height: building.height,
+                  wallColor: building.wallcolor
+                }
+            }
+        });
+
+       geojson = {
+          type: "FeatureCollection", 
+          features: features
+       }
+
+      // SHOW BUILDINGS
+      geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
+      }
+    });
+  }); //end strictly add
+
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
