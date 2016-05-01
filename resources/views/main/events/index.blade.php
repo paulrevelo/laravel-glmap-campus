@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('added-css-scripts')
+  @include('main.scripts.css-database')  
+@endsection
+
 @section('contentheader_title')
 	Events
 @endsection

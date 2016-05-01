@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('added-css-scripts')
+  @include('main.scripts.css-database')  
+@endsection
+
 @section('contentheader_title')
 	Buildings
 
@@ -34,6 +38,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Height</th>
@@ -50,6 +55,7 @@
                   <tr>
                       <td>{{ $building->id }}</td>
                       <td><a href="{{ url('buildings', $building->id) }}">{{ $building->name }}</a></td>
+                      <td><img src="{{asset('img/buildings/'.$building->image.'.jpg')}}" height="35" width="30"></td>
                       <td>{{ $building->description }}</td>
                       <td>{{ $building->height }}</td>
                       <td>{{ $building->roofcolor }}</td>
@@ -82,15 +88,7 @@
         searching: true,
         paging: true,
         autoWidth: false,
-        pagingType: "full_numbers",
-        columnDefs: [ {
-          targets: 6,
-          render: function ( data, type, row ) {
-              return data.length > 10 ?
-                data.substr( 0, 10 ) +'…' :
-                data;
-          }
-        }]
+        pagingType: "full_numbers"
       });
     });
   </script>

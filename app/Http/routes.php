@@ -32,6 +32,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('buildingdata', 'BuildingController@json');
 
+	Route::get('buildingdata/{id}', 'BuildingController@jsonByID');
+
 	Route::get('testmap', function(){
 		return view('maptest');
 	});

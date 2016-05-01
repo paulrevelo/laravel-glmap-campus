@@ -2,11 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-use App\Event, App\User, App\Building;
-=======
 use App\Event, App\Role, App\User, App\Building;
->>>>>>> 584881c48720511a0a9505bbbb693a1ddf27a065
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,26 +17,23 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         Event::create([
-        	'name' => 'The Jungle Book',
-        	'description' => 'The man-cub Mowgli flees the jungle after a threat from the tiger Shere Khan. Guided by Bagheera the panther and the bear Baloo, Mowgli embarks on a journey of self-discovery, though he also meets creatures who dont have his best interests at heart.',
-        	'location' => '[ 124.24465298652649, 8.23991593886458 ]',
+          'name' => 'The Jungle Book',
+          'description' => 'The man-cub Mowgli flees the jungle after a threat from the tiger Shere Khan. Guided by Bagheera the panther and the bear Baloo, Mowgli embarks on a journey of self-discovery, though he also meets creatures who dont have his best interests at heart.',
+          'location' => '[ 124.24465298652649, 8.23991593886458 ]',
           'room' => 'Room 101',
-        	'date' => '2017-08-01',
+          'date' => '2017-08-01',
           'time' => '08:00:00'
         ]);
 
         Event::create([
-        	'name' => 'Captain America: Civil War',
-        	'description' => 'Political interference in the Avengers activities causes a rift between former allies Captain America and Iron Man.',
-        	'location' => '[ 114.24465298652649, 12.23991593886458 ]',
+          'name' => 'Captain America: Civil War',
+          'description' => 'Political interference in the Avengers activities causes a rift between former allies Captain America and Iron Man.',
+          'location' => '[ 114.24465298652649, 12.23991593886458 ]',
           'room' => 'Room 102',
           'date' => '2017-08-01',
           'time' => '08:00:00' 
         ]);
 
-<<<<<<< HEAD
-                User::create([
-=======
         Event::create([
           'name' => 'Batman v Superman: Dawn of Justice',
           'description' => 'Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, while the world wrestles with what kind of a hero it really needs.',
@@ -66,20 +59,21 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
->>>>>>> 584881c48720511a0a9505bbbb693a1ddf27a065
             'username' => 'GreatAdmin',
             'email' => 'admin@la.fr',
             'password' => bcrypt('admin'),
             'seen' => true,
+            //'role_id' => 1,
             'confirmed' => true
         ]);  
 
         Building::create([
             'name' => 'MSU-IIT Cooperative Building',
             'description' => 'Utangan Building',
-            'height' => 6,
+            'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[[
                 [ 124.24465298652649,
                   8.23991593886458
@@ -108,9 +102,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Main Library',
             'description' => 'Tulugan Building',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -140,9 +135,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Multi-purpose Hall',
             'description' => 'Discohan',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -196,9 +192,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Classrooms 1',
             'description' => 'Bright Building',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -228,9 +225,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Classrooms 2',
             'description' => 'Brighter Building',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -260,9 +258,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Classrooms 3',
             'description' => 'Brighterer Building',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -292,9 +291,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Canteen',
             'description' => 'Agora',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -324,9 +324,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Classrooms 4',
             'description' => 'Somewhere',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -356,9 +357,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IDS Classrooms 5',
             'description' => 'Somewhere 2',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -388,9 +390,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'KASAMA Building',
             'description' => 'Elitist Building',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -420,9 +423,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Arts and Social Sciences',
             'description' => 'Taas ug Breeding Building',
-            'height' => 6,
+            'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -520,9 +524,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Business Administration and Accountancy',
             'description' => 'Datu Building',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -616,9 +621,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'School of Engineering Technology',
             'description' => 'TUnga nga Building',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -656,9 +662,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'School of Computer Studies',
             'description' => 'Dog Building',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => ' [
               [
                 [
@@ -688,9 +695,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Information and Communications Technology Center',
             'description' => 'Maintenance Pirmi Building',
-            'height' => 8,
+            'height' => 10,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -720,9 +728,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Science and Mathematics',
             'description' => 'Hufflepuff Building',
-            'height' => 6,
+            'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -804,9 +813,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Engineering',
             'description' => 'Doth Raki Building',
-            'height' => 8,
+            'height' => 10,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -860,9 +870,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Engineering EC Office',
             'description' => 'Doth Raki People',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -896,9 +907,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Nursing',
             'description' => 'Water tribe',
-            'height' => 8,
+            'height' => 10,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -988,9 +1000,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Business Administration and Accountancy Extension',
             'description' => 'Mall of IIT',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => ' [
               [
                 [
@@ -1044,9 +1057,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'MSU-IIT Gymnasium',
             'description' => 'Mall of IIT',
-            'height' => 8,
+            'height' => 10,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1092,9 +1106,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Education',
             'description' => 'Grace Poe',
-            'height' => 6,
+            'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1180,9 +1195,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'University Clinic',
             'description' => 'WBI identifier',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1210,9 +1226,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1246,9 +1263,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Guard House',
             'description' => 'Tangapan ng mga Mapang-api',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1282,9 +1300,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Administration Building',
             'description' => 'Kurakot',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1314,9 +1333,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Bahay Alumni',
             'description' => 'Bahay walay bahay',
-            'height' => 6,
+            'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1370,9 +1390,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'Alumni Office',
             'description' => 'StamBahay',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => ' [
               [
                 [
@@ -1402,9 +1423,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'IPDM',
             'description' => 'Peace Office',
-            'height' => 4,
+            'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [
@@ -1442,9 +1464,10 @@ class DatabaseSeeder extends Seeder
         Building::create([
             'name' => 'College of Education Extension',
             'description' => 'Likod',
-            'height' => 2,
+            'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
+            'image' => 'scs-building',
             'polygon' => '[
               [
                 [

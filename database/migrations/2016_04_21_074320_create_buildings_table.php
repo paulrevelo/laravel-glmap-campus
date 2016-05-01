@@ -19,6 +19,7 @@ class CreateBuildingsTable extends Migration
             $table->smallInteger('height')->unsigned();
             $table->string('roofcolor',7);
             $table->string('wallcolor',7);
+            $table->string('image',70);
             $table->longText('polygon');
             $table->timestamps();
         });

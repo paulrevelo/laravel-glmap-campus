@@ -42,12 +42,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="modal-title">Modal title</h4>
         </div>
         <div class="modal-body">
-        @foreach($buildings as $building)
-          Hello,{{ $building->name }}.
-        @endforeach
+          <div class="row">
+            <div class="col-md-4"  id="modal-image">
+            </div>
+            <div class="col-md-8" id="modal-description">
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -152,11 +155,25 @@
       var id = osmb.getTarget(e.x, e.y, function(id) {
         if (id) {
           $('#myModal').modal('show');
+          getBuilding(id);
         } else {
           
         }
       });
     });
+
+     function getBuilding(id){
+      $.ajax({
+        type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata/'+id,
+      success: function(buildingData){
+        $('#modal-title').html(buildingData.name);
+        $('#modal-description').html(buildingData.description);
+        $('#modal-image').html(buildingData.image);
+      }
+      });
+    }
 
     // CONTROL BUTTONS
     var controlButtons = document.querySelectorAll('.control button');

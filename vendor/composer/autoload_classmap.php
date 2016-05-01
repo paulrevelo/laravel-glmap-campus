@@ -105,6 +105,7 @@ return array(
     'CreateEventsTable' => $baseDir . '/database/migrations/2016_04_11_074852_create_events_table.php',
     'CreateForeignKey' => $baseDir . '/database/migrations/2016_04_25_064929_CreateForeignKey.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateRolesTable' => $baseDir . '/database/migrations/2016_04_24_065309_create_roles_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

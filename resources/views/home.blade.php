@@ -53,9 +53,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="modal-title">Modal title</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modal-body">
           ...
         </div>
         <div class="modal-footer">
@@ -145,6 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           //console.log(buildings);
           // console.log('success', building);
           var features = new Array();
+
             $.each(buildings, function(i, building){
               //console.log(building);
 
@@ -187,17 +188,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
       });
     });
 
+
     // SHOW MODAL
     map.on('pointerdown', function(e) {
       var id = osmb.getTarget(e.x, e.y, function(id) {
         if (id) {
           $('#myModal').modal('show');
+          getBuilding(id);
         } else {
           
         }
       });
     });
 
+
+    function getBuilding(id){
+      $.ajax({
+        type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata/'+id,
+      success: function(buildingData){
+        $('#modal-title').html(buildingData.name);
+        $('#modal-body').html(buildingData.description);
+      }
+      });
+    }
     // CONTROL BUTTONS
     var controlButtons = document.querySelectorAll('.control button');
 

@@ -168,6 +168,10 @@ class BuildingController extends Controller
 		 // return view('main.building.index', compact('buildings','links'));
 	}
 
+	public function jsonByID($id){
+		return Building::findOrFail($id);
+	}
+
 	public function json(){
 		return Building::all();
 	}
