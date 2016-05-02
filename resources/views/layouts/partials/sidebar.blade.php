@@ -40,12 +40,12 @@
               </a>
             </li>
 
-             <li>
+             <!-- <li>
               <a href="{{ url('map-editor') }}">
                 <i class="fa fa-map fa-fw"></i> 
                 <span>Map with Events</span>
               </a>
-            </li> 
+            </li>  -->
 
             <li>
               <a href="{{ url('buildings') }}">

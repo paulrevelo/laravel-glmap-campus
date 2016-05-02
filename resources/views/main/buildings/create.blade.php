@@ -49,9 +49,14 @@
             </div>
 
             <div class="form-group col-md-6">
-              {!! Form::label('roofcolor', 'Roof Color: ') !!}
+              {!! Form::label('roofcolor', 'Roof Color') !!}
                 {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
-            </div> 
+            </div>
+
+            <div class="form-group col-md-6">
+              {!! Form::label('image', 'Image Name') !!}
+                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name.jpg']) !!}
+            </div>   
 
         </div><!-- /.box-body -->
 
@@ -90,7 +95,7 @@
 
    // create map engine 
     var map = new L.Map('map-canvas');
-    map.setView([8.241354685854704, 124.24403356388211], 17.2, false);
+    map.setView([8.241354685854704, 124.24403356388211], 19, false);
 
     new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
@@ -179,6 +184,7 @@
                 },
                 properties: {
                   id:  building.id,
+                  name:  building.name,
                   roofColor: building.roofcolor,
                   height: building.height,
                   wallColor: building.wallcolor

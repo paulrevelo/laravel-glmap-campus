@@ -9,6 +9,13 @@
 @endsection
 
 @section('main-content')
+
+  <div class="control">
+    <button type="button" class="btn btn-default dec" data-toggle="tooltip" data-placement="right" title="Tilt down">
+      <i class="fa fa-long-arrow-up"></i>
+    </button>
+  </div>
+
 	<div class="control tilt btn-group-vertical">
     <button type="button" class="btn btn-default dec" data-toggle="tooltip" data-placement="right" title="Tilt down">
       <i class="fa fa-long-arrow-up"></i>
@@ -42,8 +49,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="modal-title">Modal title</h4>
-        </div>
+          <span id="modal-id"></span><span id="modal-title"></span>
+        </div> 
         <div class="modal-body">
           <div class="row">
             <div class="col-md-4"  id="modal-image">
@@ -168,12 +175,18 @@
       dataType: 'JSON',
       url: '/buildingdata/'+id,
       success: function(buildingData){
+        $('#modal-id').html(buildingData.id);
         $('#modal-title').html(buildingData.name);
         $('#modal-description').html(buildingData.description);
-        $('#modal-image').html(buildingData.image);
+        // $('#modal-image').html(buildingData.image);
+        // $('#modal-image').append('<img src=/public/img/buildings/'+buildingData.image+'.jpg>');
+        //('#modal-image').append('<img src="{{asset("img/buildings")}}">');
+        $('<img/>').attr("img/buildings/" + buildingData.image, buildingData.image).appendTo('#modal-image');
+
       }
       });
     }
+
 
     // CONTROL BUTTONS
     var controlButtons = document.querySelectorAll('.control button');

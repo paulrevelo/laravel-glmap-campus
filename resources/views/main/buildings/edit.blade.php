@@ -50,7 +50,12 @@
             <div class="form-group col-md-6">
               {!! Form::label('roofcolor', 'Roof Color: ') !!}
                 {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
-            </div>  
+            </div> 
+
+            <div class="form-group col-md-6">
+              {!! Form::label('image', 'Image Name: ') !!}
+                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name.jpg']) !!}
+            </div>   
 
         </div><!-- /.box-body -->
 

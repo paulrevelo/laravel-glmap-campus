@@ -17,6 +17,7 @@
           </div><!-- /.box-header -->
 
           <div class="box-body">
+
             <h4><b>Name</b></h4>
             <p>{{ $building->name }}</p>
             <hr>
@@ -42,6 +43,9 @@
 
       <div class="col-md-6">
         <div class="box box-success">
+          <div class="box-body">
+            <img src="{{asset('img/buildings/'.$building->image.'.jpg')}}" height="100%" width="100%" class="img-rounded">
+          </div>
         </div>
       </div>
     </div>
