@@ -41,11 +41,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </button>
   </div>
 
-<!--   <div class="control tilt btn-group-vertical">
-    <a href="{{url('/login')}}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Login">
-      Login</a>
-    </button>
-  </div> -->
+  <div id="info-box">
+    <a href="{{url('/login')}}">Login</a>
+  </div>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -53,14 +51,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body" id="modal-body">
-          ...
+          <span id="modal-id" style="font-size:20px;"></span>&nbsp;&#45;&nbsp;<span id="modal-title" style="font-size:20px;"></span>
+        </div> 
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12" id="modal-image">
+            </div>
+            <div class="col-md-12" id="modal-description" style="text-align: justify; text-justify: inter-word;">
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
         </div>
       </div>
     </div>
@@ -103,8 +105,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @include('layouts.partials.scripts')
   @include('main.scripts.js-osm') 
 @show
-
-   
 
   <script>
 
@@ -195,8 +195,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         if (id) {
           $('#myModal').modal('show');
           getBuilding(id);
-        } else {
-          
         }
       });
     });
@@ -208,11 +206,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       dataType: 'JSON',
       url: '/buildingdata/'+id,
       success: function(buildingData){
+        $('#modal-id').html(buildingData.id);
         $('#modal-title').html(buildingData.name);
-        $('#modal-body').html(buildingData.description);
+        // $('#preview-name').html(buildingData.name);
+        $('#modal-description').html(buildingData.description);
+        $('#modal-image').html('<img src="/img/buildings/'+buildingData.image+'.jpg" width="570">');
       }
       });
     }
+    
     // CONTROL BUTTONS
     var controlButtons = document.querySelectorAll('.control button');
 

@@ -10,11 +10,9 @@
 
 @section('main-content')
 
-  <div class="control">
-    <button type="button" class="btn btn-default dec" data-toggle="tooltip" data-placement="right" title="Tilt down">
-      <i class="fa fa-long-arrow-up"></i>
-    </button>
-  </div>
+  <!-- <div id="info-box">
+    <span id="preview-name"></span>
+  </div> -->
 
 	<div class="control tilt btn-group-vertical">
     <button type="button" class="btn btn-default dec" data-toggle="tooltip" data-placement="right" title="Tilt down">
@@ -49,19 +47,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <span id="modal-id"></span><span id="modal-title"></span>
+          <span id="modal-id" style="font-size:20px;"></span>&nbsp;&#45;&nbsp;<span id="modal-title" style="font-size:20px;"></span>
         </div> 
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-4"  id="modal-image">
+            <div class="col-md-12" id="modal-image">
             </div>
-            <div class="col-md-8" id="modal-description">
+            <div class="col-md-12" id="modal-description" style="text-align: justify; text-justify: inter-word;">
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
         </div>
       </div>
     </div>
@@ -163,8 +160,6 @@
         if (id) {
           $('#myModal').modal('show');
           getBuilding(id);
-        } else {
-          
         }
       });
     });
@@ -177,16 +172,12 @@
       success: function(buildingData){
         $('#modal-id').html(buildingData.id);
         $('#modal-title').html(buildingData.name);
+        // $('#preview-name').html(buildingData.name);
         $('#modal-description').html(buildingData.description);
-        // $('#modal-image').html(buildingData.image);
-        // $('#modal-image').append('<img src=/public/img/buildings/'+buildingData.image+'.jpg>');
-        //('#modal-image').append('<img src="{{asset("img/buildings")}}">');
-        $('<img/>').attr("img/buildings/" + buildingData.image, buildingData.image).appendTo('#modal-image');
-
+        $('#modal-image').html('<img src="/img/buildings/'+buildingData.image+'.jpg" width="570">');
       }
       });
     }
-
 
     // CONTROL BUTTONS
     var controlButtons = document.querySelectorAll('.control button');

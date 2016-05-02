@@ -69,11 +69,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'MSU-IIT Cooperative Building',
-            'description' => 'Utangan Building',
+            'description' => 'Over a decade of being an open-type cooperative, Head Office was transferred to its new home, located at MSU-IIT NMPC Bldg. Quezon Avenue Ext.,Pala-o , Iligan City',
             'height' => 8,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#ffc17c',
+            'wallcolor' => '#b1b2ad',
+            'image' => 'cooperative-building',
             'polygon' => '[[
                 [ 124.24465298652649,
                   8.23991593886458
@@ -100,12 +100,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Main Library',
-            'description' => 'Tulugan Building',
+            'name' => 'Institute Library',
+            'description' => 'The MSU-Iligan Institute of Technology Library was established when the Lanao Technical School of the Bureau of Vocational Education was integrated into the Mindanao State University in 1968 as an external autonomous unit. The school was then renamed MSU-Iligan Institute of Technology by virtue of R.A. 5363.',
             'height' => 6,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#ffc17c',
+            'wallcolor' => '#ffe5c9',
+            'image' => 'institute-library-building',
             'polygon' => '[
               [
                 [
@@ -133,12 +133,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IDS Multi-purpose Hall',
+            'name' => 'IDS Multi-Purpose Hall (IDS-MPH)',
             'description' => 'Discohan',
             'height' => 6,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#ffc17c',
+            'wallcolor' => '#ffe5c9',
+            'image' => 'ids-mph-building',
             'polygon' => '[
               [
                 [
@@ -195,7 +195,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -228,7 +228,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -261,7 +261,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -294,7 +294,7 @@ class DatabaseSeeder extends Seeder
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -327,7 +327,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -360,7 +360,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ids-building',
             'polygon' => '[
               [
                 [
@@ -421,12 +421,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Arts and Social Sciences',
-            'description' => 'Taas ug Breeding Building',
+            'name' => 'College of Arts and Social Sciences (CASS)',
+            'description' => 'Awarded with Level III Accreditation from AACCUP, CASS continues in building its legacy through the competent performances of its seven departments, duly offering the programs Bachelor of Science in Psychology and Bachelor of Arts major in English, Filipino, History, Political Science, and Sociology.',
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'cass-building',
             'polygon' => '[
               [
                 [
@@ -522,12 +522,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Business Administration and Accountancy',
-            'description' => 'Datu Building',
+            'name' => 'College of Business Administration and Accountancy (CBAA)',
+            'description' => 'The College of Business Administration and Accountancy (CBAA) offers undergraduate and graduate programs. The undergraduate programs are: Bachelor of Science in Accountancy and Bachelor of Science in Business Administration with specialization either in Business Economics or Entrepreneurial Marketing. The graduate program in Master in Business Management offers the following specialization areas on Finance, Human Resource Management, Marketing and Production Management.',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'cbaa-building',
             'polygon' => '[
               [
                 [
@@ -619,12 +619,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'School of Engineering Technology',
-            'description' => 'TUnga nga Building',
+            'name' => 'School of Engineering Technology (SET)',
+            'description' => 'Highly recommended program for engineering technology graduates who desire to attain a degree that strengthens and enhances their technical knowledge and skills.',
             'height' => 4,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#db8047',
+            'wallcolor' => '#db8047',
+            'image' => 'set-building',
             'polygon' => '[
               [
                 [
@@ -660,11 +660,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'School of Computer Studies',
-            'description' => 'Dog Building',
+            'name' => 'School of Computer Studies (SCS)',
+            'description' => 'The School of Computer Studies (SCS) is responsible for the teaching, research and extension functions of the Information and Communication Technology Center (ICTC). To this end, it offers degree and non-degree programs in the graduate and undergraduate levels. These programs are carried through on campus or distance mode by formal, non-formal or informal systems.',
             'height' => 6,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
+            'roofcolor' => '#e07c7c',
+            'wallcolor' => '#999897',
             'image' => 'scs-building',
             'polygon' => ' [
               [
@@ -693,11 +693,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'Information and Communications Technology Center',
-            'description' => 'Maintenance Pirmi Building',
+            'name' => 'School of Computer Studies (SCS ) New Building',
+            'description' => 'The School of Computer Studies (SCS) is responsible for the teaching, research and extension functions of the Information and Communication Technology Center (ICTC). To this end, it offers degree and non-degree programs in the graduate and undergraduate levels. These programs are carried through on campus or distance mode by formal, non-formal or informal systems.',
             'height' => 10,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
+            'roofcolor' => '#ffc17c',
+            'wallcolor' => '#ffe5c9',
             'image' => 'scs-building',
             'polygon' => '[
               [
@@ -726,12 +726,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Science and Mathematics',
-            'description' => 'Hufflepuff Building',
+            'name' => 'College of Science and Mathematics (CSM)',
+            'description' => 'The College has produced has produced a lot of quality graduates, among them are topnotchers in the Chemistry Licensure examination. Recently, it was number one (1) in the list of the top performing schools in the 2002 Chemistry Licensure Examination. Through the years, its percentage passing in the Chemistry Licensure Examination has been consistently very high. The college has also produced several winners in different regional/national student competitions. It has also consistently sent delegates to the most prestigious training ground for student leaders, the Ayala National Young Leaders Congress. Many of the graduates of the College are now well-placed and are leaders in their respective fields.',
             'height' => 8,
             'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'wallcolor' => '#9e9e9e',
+            'image' => 'csm-building',
             'polygon' => '[
               [
                 [
@@ -811,12 +811,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Engineering',
-            'description' => 'Doth Raki Building',
+            'name' => 'College of Engineering (COE)',
+            'description' => 'Since its establishment in 1977, the College of Engineering (COE) has grown and matured into a respectable engineering school. COE offers eight (8) tertiary programs, six (6) of which were recognized by the Commission on Higher Education as Centers of Development in SY1999-2000 for three years and four (4) of these programs are currently accredited by the Accrediting Agency for Chartered Colleges and Universities in the Philippines (AACCUP). In addition, it also offers three (3) masters degree programs and three (3) doctoral programs. The College of Engineering consistently has very high passing rates in board examinations in various fields. Its graduates are much sought after by industries not only in the area but throughout the country.',
             'height' => 10,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#c9c9c9',
+            'wallcolor' => '#bfbbaf',
+            'image' => 'coe-building',
             'polygon' => '[
               [
                 [
@@ -869,11 +869,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'College of Engineering EC Office',
-            'description' => 'Doth Raki People',
+            'description' => 'Executive Council office of the College of Engineering.',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'coe-building',
             'polygon' => '[
               [
                 [
@@ -905,15 +905,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Nursing',
-            'description' => 'Water tribe',
+            'name' => 'College of Nursing (CON)',
+            'description' => 'Since its establishment in 2004, as an extension unit of the College of Health Sciences of the Mindanao State University Main Campus and now as the newest college of MSU-IIT, the College of Nursing has consistently ranked among the top three (3) performing nursing schools in the country through the national Nurse Licensure Examination.',
             'height' => 10,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'con-building',
             'polygon' => '[
               [
-                [
+                [s
                   124.24354260438122,
                   8.240946554744774
                 ],
@@ -999,11 +999,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'College of Business Administration and Accountancy Extension',
-            'description' => 'Mall of IIT',
+            'description' => 'The College of Business Administration and Accountancy (CBAA) offers undergraduate and graduate programs. The undergraduate programs are: Bachelor of Science in Accountancy and Bachelor of Science in Business Administration with specialization either in Business Economics or Entrepreneurial Marketing. The graduate program in Master in Business Management offers the following specialization areas on Finance, Human Resource Management, Marketing and Production Management.',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'cbaa-building',
             'polygon' => ' [
               [
                 [
@@ -1056,11 +1056,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'MSU-IIT Gymnasium',
-            'description' => 'Mall of IIT',
+            'description' => 'Gymnasium of MSU-IIT',
             'height' => 10,
-            'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'roofcolor' => '#db8047',
+            'wallcolor' => '#f3e9ce',
+            'image' => 'gym-building',
             'polygon' => '[
               [
                 [
@@ -1104,12 +1104,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'College of Education',
-            'description' => 'Grace Poe',
+            'name' => 'College of Education (CED)',
+            'description' => 'CED is among the top performing schools in the Philippines in the Licensure Examination for Teachers (LET) Elementary Level in 2008. It ranked second in the same category in 2004. Iin 2006, CED gained the third rank in the Licensure Examination for Teachers (LET) in the Secondary Level nationwide and number one in the LET Elementary Level in Region 10. These accomplishments are the results of the best efforts of the faculty, staff, students and the administration. Thus, realizing the dreams of the previous deans who at one moment had led CED to what it is today.',
             'height' => 8,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ced-building',
             'polygon' => '[
               [
                 [
@@ -1193,12 +1193,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'University Clinic',
+            'name' => 'Institute Clinic',
             'description' => 'WBI identifier',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'clinic-building',
             'polygon' => '[
               [
                 [
@@ -1226,10 +1226,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
+            'name' => 'Institute Security Office',
+            'description' => 'Office of all security personnel',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'security-building',
             'polygon' => '[
               [
                 [
@@ -1303,7 +1305,7 @@ class DatabaseSeeder extends Seeder
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'administration-building',
             'polygon' => '[
               [
                 [
@@ -1332,11 +1334,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'Bahay Alumni',
-            'description' => 'Bahay walay bahay',
+            'description' => 'Houses all graduates who want to study again',
             'height' => 8,
             'roofcolor' => '#ffc27c',
-            'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'wallcolor' => '#b5b5b5',
+            'image' => 'bahay-alumni-building',
             'polygon' => '[
               [
                 [
@@ -1389,11 +1391,11 @@ class DatabaseSeeder extends Seeder
 
         Building::create([
             'name' => 'Alumni Office',
-            'description' => 'StamBahay',
+            'description' => 'All alumni transactions will be catered here.',
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'alumni-office-building',
             'polygon' => ' [
               [
                 [
@@ -1421,12 +1423,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Building::create([
-            'name' => 'IPDM',
-            'description' => 'Peace Office',
+            'name' => 'Institute for Peace and Development in Mindanao (IPDM)',
+            'description' => 'The Institute for Peace and Development in Mindanao (IPDM) of MSU – Iligan Institute of Technology (MSU-IIT) is one of the seven units of the system-wide IPDM of the Mindanao State University System. It was created by BOR Resolution # 107, series of 2007 as MSU system’s proactive response to Executive Order 570 of September 2006. The said executive order is part of the national government’s efforts to institutionalize and integrate peace into the basic and tertiary education by including the teaching and learning of peace into the mandates of the Department of Education and Higher Education Institutions. Prior to the creation of IPDM, however, MSU-IIT had already established the Iligan Center for Peace Education and Research (ICPER) in 1998. The center was initially created through the efforts of Dr. Luis Q. Lacar and Vice Chancellor Jimmy Balacuit. Its first director was Dr. Jamail A. Kamlian who was followed by Dr. Marilou S. Nanaman after two years. It was during Dr. Nanaman’s term as director, that BOR Resolution 107 s. 2007 was passed, thereby changing the name of ICPER into IPDM and administratively placing the office directly under the chancellor.',
             'height' => 6,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ipdm-building',
             'polygon' => '[
               [
                 [
@@ -1467,7 +1469,7 @@ class DatabaseSeeder extends Seeder
             'height' => 4,
             'roofcolor' => '#ffc27c',
             'wallcolor' => '#ffe6c9',
-            'image' => 'scs-building',
+            'image' => 'ced-building',
             'polygon' => '[
               [
                 [
@@ -1492,6 +1494,68 @@ class DatabaseSeeder extends Seeder
                 ]
               ]
             ]',
+        ]);
+
+        Building::create([
+            'name' => 'Hostel',
+            'description' => 'MSU-IIT Hostel is all set in one perfect place that offers quality services at a very affordable price! Fully aircondtioned rooms with Hot and Cold shower with wireless internet conection.',
+            'height' => 6,
+            'roofcolor' => '#ffc27c',
+            'wallcolor' => '#ffe6c9',
+            'image' => 'hostel-building',
+            'polygon' => '[[
+                [
+                    124.24320325255393,
+                    8.239820376148577
+                ],
+                [
+                    124.24340710043906,
+                    8.239629250647294
+                ],
+                [
+                    124.24327835440636,
+                    8.239517760728932
+                ],
+                [
+                    124.24307987093924,
+                    8.239692959157992
+                ],
+                [
+                    124.24320325255393,
+                    8.239820376148577
+                ]
+            ]]',
+        ]);
+
+        Building::create([
+            'name' => 'MSU-IIT Offices',
+            'description' => 'Offices beside CED.',
+            'height' => 6,
+            'roofcolor' => '#ffc27c',
+            'wallcolor' => '#ffe6c9',
+            'image' => 'offices-building',
+            'polygon' => '[[
+                [
+                    124.24310225062072,
+                    8.24222536414858
+                ],
+                [
+                    124.24334901385009,
+                    8.242172274063584
+                ],
+                [
+                    124.2433226108551,
+                    8.242082020902718
+                ],
+                [
+                    124.24308615736665,
+                    8.242145729018404
+                ],
+                [
+                    124.24310225062072,
+                    8.24222536414858
+                ]
+            ]]',
         ]);
 
     }

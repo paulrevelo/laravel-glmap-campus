@@ -52,11 +52,14 @@
               {!! Form::label('roofcolor', 'Roof Color') !!}
                 {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
             </div>
-
+            
             <div class="form-group col-md-6">
               {!! Form::label('image', 'Image Name') !!}
-                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name.jpg']) !!}
-            </div>   
+              <div class="input-group">
+                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name']) !!}
+                <div class="input-group-addon">.jpg</div>
+              </div>
+            </div>
 
         </div><!-- /.box-body -->
 

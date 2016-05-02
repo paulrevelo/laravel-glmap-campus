@@ -24,38 +24,41 @@
             
             <div class="form-group col-md-9">
             {!! Form::label('name', 'Name: ') !!}
-              {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
+            {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
             </div>
 
             <div class="form-group col-md-3">
-              {!! Form::label('height', 'Height: ') !!}
-                {!! Form::text('height', null, ['class' => 'form-control', 'id' => 'height', 'maxlength' => '4', 'size' => '4' ]) !!}
+              {!! Form::label('height', 'Height') !!}
+              {!! Form::text('height', null, ['class' => 'form-control', 'id' => 'height', 'maxlength' => '4', 'size' => '4' ]) !!}
             </div>
 
             <div class="form-group col-md-6">
-            {!! Form::label('description', 'Description: ') !!}
-              {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '11']) !!}
+            {!! Form::label('description', 'Description') !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '11']) !!}
             </div>
 
             <div class="form-group col-md-6">
-            {!! Form::label('polygon', 'Coordinates: ') !!}
-              {!! Form::textarea('polygon', null, ['class' => 'form-control', 'rows' => '11', 'readonly']) !!}
+            {!! Form::label('polygon', 'Coordinates') !!}
+            {!! Form::textarea('polygon', null, ['class' => 'form-control', 'rows' => '11', 'readonly']) !!}
             </div> 
 
-            <div class="form-group col-md-6">
-              {!! Form::label('wallcolor', 'Wall Color: ') !!}
-                {!! Form::text('wallcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff0000']) !!}
-            </div>
-
-            <div class="form-group col-md-6">
-              {!! Form::label('roofcolor', 'Roof Color: ') !!}
-                {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
+            <div class="form-group col-md-4">
+              {!! Form::label('roofcolor', 'Roof Color') !!}
+              {!! Form::text('roofcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff8000']) !!}
             </div> 
 
-            <div class="form-group col-md-6">
-              {!! Form::label('image', 'Image Name: ') !!}
-                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name.jpg']) !!}
-            </div>   
+            <div class="form-group col-md-4">
+              {!! Form::label('wallcolor', 'Wall Color') !!}
+              {!! Form::text('wallcolor', null, ['class' => 'form-control my-colorpicker1', 'placeholder' => '#ff0000']) !!}
+            </div>
+
+            <div class="form-group col-md-4">
+              {!! Form::label('image', 'Image Name') !!}
+              <div class="input-group">
+                {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name']) !!}
+                <div class="input-group-addon">.jpg</div>
+              </div>
+            </div> 
 
         </div><!-- /.box-body -->
 
