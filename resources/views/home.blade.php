@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 
   <div id="info-box">
-    <a href="{{url('/login')}}">Login</a>
+    <a href="{{url('/auth/login')}}">Login</a>
   </div>
 
   <!-- Modal -->

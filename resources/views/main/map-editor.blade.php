@@ -72,10 +72,10 @@
       if (type === 'polygon') {
       map.fitBounds(e.target.getBounds());
       }
-      // if(selectedFeature)
-      //   selectedFeature.editing.disable();
-      //   selectedFeature = e.target;
-      //   e.target.editing.enable();
+      if(selectedFeature)
+        selectedFeature.editing.disable();
+        selectedFeature = e.target;
+        e.target.editing.enable();
     }
 
     function onEachFeature(feature, layer) {

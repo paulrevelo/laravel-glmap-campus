@@ -76,10 +76,10 @@
 
     <div class="col-md-7">
 
-      <div class="alert alert-danger alert-dismissable">
+      <!-- <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         You cannot edit the building polygon after this, make sure you do this seriously.      
-      </div>
+      </div> -->
 
       <div id="map-canvas" class="box box-solid"></div>
     </div>
@@ -96,9 +96,9 @@
     //color picker with addon
     $(".my-colorpicker1").colorpicker();
 
-   // create map engine 
+    // create map engine 
     var map = new L.Map('map-canvas');
-    map.setView([8.241354685854704, 124.24403356388211], 19, false);
+    map.setView([8.241354685854704, 124.24403356388211], 17, false);
 
     new L.TileLayer('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png', {
       attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>'
@@ -198,13 +198,13 @@
        geojson = {
           type: "FeatureCollection", 
           features: features
-       }
+        }
 
-      // SHOW BUILDINGS
-      geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
-      }
-    });
-  }); //end strictly add
+        // SHOW BUILDINGS
+        geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
+        }
+      });
+    }); //end strictly add
 
 
     var drawnItems = new L.FeatureGroup();
