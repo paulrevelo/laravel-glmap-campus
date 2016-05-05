@@ -69,7 +69,7 @@ class AuthController extends Controller
         );
 
         if ($throttles && $this->hasTooManyLoginAttempts($request)) {
-            return redirect('/auth/login')
+            return redirect('/auth/index')
                 ->with('error', trans('front/login.maxattempt'))
                 ->withInput($request->only('log'));
         }
@@ -84,7 +84,7 @@ class AuthController extends Controller
                 $this->incrementLoginAttempts($request);
             }
 
-            return redirect('/auth/login')
+            return redirect('/auth/index')
                 ->with('error', trans('front/login.credentials'))
                 ->withInput($request->only('log'));
         }
@@ -107,7 +107,7 @@ class AuthController extends Controller
         
         $request->session()->put('user_id', $user->id); 
 
-        return redirect('/auth/login')->with('error', trans('front/verify.again'));         
+        return redirect('/auth/index')->with('error', trans('front/verify.again'));         
     }
 
 

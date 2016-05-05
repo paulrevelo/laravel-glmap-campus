@@ -6,11 +6,11 @@
 @endsection
 
 @section('contentheader_title')
-	Buildings
+  Buildings
 @endsection
 
 @section('main-content')
-	<div class="row">
+  <div class="row">
     <div class="col-md-5">
 
       <div class="box box-success">
@@ -40,7 +40,7 @@
 
             <div class="form-group col-md-6">
             {!! Form::label('polygon', 'Coordinates') !!}
-            {!! Form::textarea('polygon', null, ['class' => 'form-control', 'rows' => '11', 'readonly']) !!}
+            {!! Form::textarea('polygon', null, ['id' => 'resultarea', 'class' => 'form-control', 'rows' => '11', 'readonly']) !!}
             </div> 
 
             <div class="form-group col-md-4">
@@ -112,52 +112,8 @@
       };
     }
 
-    function highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        weight: 5,
-        color: 'black'
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera) {
-          layer.bringToFront();
-      }
-    }
-
-    var geojsonLayer;
-
-    function resetHighlight(e) {
-      geojsonLayer.resetStyle(e.target);
-    }
-
-    function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
-      //alert(feature.properties.id);
-    }
-
-    function onEachFeature(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-
-      if (feature.properties) {
-        var popupString = '<div class="popup">';
-        for (var k in feature.properties) {
-            var v = feature.properties[k];
-            popupString += k + ': ' + v + '<br>';
-        }
-        popupString += '</div>';
-        layer.bindPopup(popupString, {
-            maxHeight: 200
-        });
-      }
-    }
-
-    //Strictly add per call to map
     var geojson = null;
+    var featureGroup = L.featureGroup().addTo(map);
     //convert string to array
     function convertToArray(string){
       var array = JSON.parse("" + string +"");
@@ -165,20 +121,25 @@
     }
     var valid = JSON.stringify(geojson);
 
+    var idpath = window.location.pathname.split('/');
+    var id = idpath[2];
+    console.log(id);
+
     $(function(){
 
       $.ajax({
       type: 'GET',
       dataType: 'JSON',
-      url: '/buildingdata',
-      success: function(buildings){
-        console.log(buildings);
+      url: '/buildingdata/' +id,
+      success: function(building){
+        
+        console.log(building);
         // console.log('success', building);
-        var features = new Array();
-          $.each(buildings, function(i, building){
-            //console.log(building);
+        var features;
 
-            features[i] = {
+            //console.log(building);
+            //add if stand alone
+            features = {
                 type: "Feature", 
                 geometry: {
                   type: "Polygon",
@@ -192,20 +153,70 @@
                   wallColor: building.wallcolor
                 }
             }
-        });
-
+        //add if all data
         geojson = {
           type: "FeatureCollection", 
           features: features
         }
 
+        console.log(geojson);
         // SHOW BUILDINGS
-        geojsonLayer = L.geoJson(geojson, {style:style,onEachFeature:onEachFeature}).addTo(map);
-        }
+        //geojsonLayer = L.geoJson(features, {style:style,onEachFeature:onEachFeature}).addTo(featureGroup);
+        L.geoJson(features, {
+          onEachFeature: function (feature, layer) {
+            featureGroup.addLayer(layer);
+          }
+        });
+
+        } 
       });
     }); //end strictly add
 
 
+    var drawControl = new L.Control.Draw({
+      draw: {
+        position: 'topright',
+        polygon: {
+          allowIntersection: false,
+          drawError: {
+            color: '#b00b00',
+            timeout: 1000
+          },
+          shapeOptions: {
+            color: '#bada55'
+          },
+          showArea: true
+        },
+        polyline: false,
+        circle: false,
+        rectangle: false,
+        marker: false
+      },
+      edit: {
+        featureGroup: featureGroup
+      }
+    }).addTo(map);
+
+    map.on('draw:edited', function (e) {
+      var layers = e.layers;
+      layers.eachLayer(function (layer) {
+        if (layer instanceof L.Polyline) {
+          coordinates = [];
+          latlngs = layer.getLatLngs();
+          for (var i = 0; i < latlngs.length; i++) {
+            coordinates.push([latlngs[i].lng, latlngs[i].lat])
+          }
+
+          coordinates.splice((latlngs.length + 1), 0, [latlngs[0].lng, latlngs[0].lat]); 
+
+          var coordinates_result = JSON.stringify(coordinates, null, 4);
+
+          var final_result = "&#91" + coordinates_result +  "&#93";
+
+          document.getElementById("resultarea").innerHTML = final_result;
+        }
+      });
+    });
 
   </script>
   

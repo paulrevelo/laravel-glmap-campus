@@ -76,7 +76,7 @@
   
     // BASEMAP
     var map = new GLMap('map-canvas', {
-      position: {latitude: 8.241097198309157, longitude: 124.24392879009247},
+      position: {latitude: 8.241768789184688, longitude: 124.24392879009247},
       zoom: 17.8,
       tilt: 45
     });
@@ -92,6 +92,7 @@
     osmb.addMapTiles('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
     {attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'};
 
+    //osmb.addOBJ('{{asset('obj/csm.obj')}}', { latitude: 8.24176613467753, longitude: 124.24443304538725}, {id: "my_object_1", scale: 1, rotation: 101, color: '#cccccc'});
 
     //Strictly add per call to map
     var geojson=null;
