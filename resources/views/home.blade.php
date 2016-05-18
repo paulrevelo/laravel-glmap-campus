@@ -41,8 +41,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </button>
   </div>
 
-  <div id="info-box">
+  <div id="login-box">
     <a href="{{url('/auth/login')}}">Login</a>
+  </div>
+  <div id="info-box">
+    <span id="preview-name">
+    </span>
   </div>
 
   <!-- Modal -->
@@ -126,6 +130,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     osmb.addMapTiles('http://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png'),
     {attribution: '© Data <a href=http://openstreetmap.org/copyright/>OpenStreetMap</a> · © Map <a href=http://mapbox.com>MapBox</a>'};
 
+    osmb.addGeoJSON("{{ asset('/json/landarea.json') }}");
+
     //osmb.addOBJ('{{asset('obj/csm.obj')}}', { latitude: 8.24176613467753, longitude: 124.24443304538725}, {id: "my_object_1", scale: 1, rotation: 101, color: '#cccccc'});
 
     //Strictly add per call to map
@@ -149,7 +155,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           var features = new Array();
 
             $.each(buildings, function(i, building){
-              //console.log(building);
+              console.log(building);
 
               features[i] = {
                   type: "Feature", 
@@ -183,13 +189,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         if (id) {
           document.body.style.cursor = 'pointer';
           osmb.highlight(id, '#f08000');
+          getName(id);
         } else {
           document.body.style.cursor = 'default';
           osmb.highlight(null);
         }
       });
     });
-
 
     // SHOW MODAL
     map.on('pointerdown', function(e) {
@@ -201,6 +207,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       });
     });
 
+    function getName(id){
+      $.ajax({
+        type: 'GET',
+      dataType: 'JSON',
+      url: '/buildingdata/'+id,
+      success: function(buildingData){
+        $('#preview-name').html(buildingData.name);
+      }
+      });
+    }
 
     function getBuilding(id){
       $.ajax({
@@ -210,7 +226,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       success: function(buildingData){
         $('#modal-id').html(buildingData.id);
         $('#modal-title').html(buildingData.name);
-        // $('#preview-name').html(buildingData.name);
         $('#modal-description').html(buildingData.description);
         $('#modal-image').html('<img src="/img/buildings/'+buildingData.image+'.jpg" width="570">');
       }

@@ -47,9 +47,10 @@
 
 .tooltip {
     width: 100px;
+    z-index: 3;
 }
 
-#info-box {
+#login-box {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
   color: rgb(86, 86, 86);
@@ -59,4 +60,18 @@
   padding: 8px;
   position: absolute;
   z-index: 2;
+}
+
+#info-box {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
+  color: rgb(86, 86, 86);
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 50px;
+  padding: 8px;
+  position: absolute;
+  z-index: 2;
+  height: 40px;
+  width: 500px;
 }

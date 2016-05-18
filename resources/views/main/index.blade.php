@@ -94,6 +94,8 @@
 
     //osmb.addOBJ('{{asset('obj/csm.obj')}}', { latitude: 8.24176613467753, longitude: 124.24443304538725}, {id: "my_object_1", scale: 1, rotation: 101, color: '#cccccc'});
 
+    osmb.addGeoJSON("{{ asset('/json/landarea.json') }}");
+    
     //Strictly add per call to map
     var geojson=null;
     //convert string to array.

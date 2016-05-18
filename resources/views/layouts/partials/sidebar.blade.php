@@ -36,7 +36,7 @@
             <li>
               <a href="{{ url('index') }}">
                 <i class="fa fa-map fa-fw"></i>
-                <span>Map with 3D Buildings</span>
+                <span>Map</span>
               </a>
             </li>
 
@@ -54,12 +54,12 @@
               </a>
             </li>
 
-            <li>
+            <!-- <li>
               <a href="{{ url('events') }}">
                 <i class="fa fa-flag fa-fw"></i> 
                 <span>Events</span>
               </a>
-            </li>
+            </li> -->
 
             <li>
               <a href="{{ url('logout') }}">

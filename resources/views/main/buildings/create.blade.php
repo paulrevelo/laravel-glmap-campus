@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group col-md-3">
-              {!! Form::label('height', 'Height') !!}
+              {!! Form::label('height', 'Height (1 floor = 2)') !!}
                 {!! Form::text('height', null, ['class' => 'form-control', 'maxlength' => '4', 'size' => '4' ]) !!}
             </div>
 
@@ -40,7 +40,7 @@
 
             <div class="form-group col-md-6">
             {!! Form::label('polygon', 'Coordinates') !!}
-              {!! Form::textarea('polygon', null, ['id' => 'resultarea', 'class' => 'form-control', 'rows' => '12', 'readonly']) !!}
+              {!! Form::textarea('polygon', null, ['id' => 'resultarea', 'class' => 'form-control', 'rows' => '12']) !!}
             </div> 
 
             <div class="form-group col-md-6">
@@ -55,6 +55,7 @@
             
             <div class="form-group col-md-6">
               {!! Form::label('image', 'Image Name') !!}
+              <p><small>Save your image at public\img\buildings</small></p>
               <div class="input-group">
                 {!! Form::text('image', null, ['class' => 'form-control', 'placeholder' => 'building-name']) !!}
                 <div class="input-group-addon">.jpg</div>
@@ -64,10 +65,11 @@
         </div><!-- /.box-body -->
 
         <div class="box-footer">
-
-        <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
-          {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
-          {!! Form::close() !!}
+          <div class="box-tools pull-right">
+            <a href="{{{ URL::previous() }}}" type="button" class="btn btn-default">Cancel</a>
+            {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+          </div>
         </div>
           
       </div><!-- /.box -->
