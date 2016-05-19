@@ -5,7 +5,7 @@
           "type": "Feature",
           "properties": {
             "height": 1,
-            "roofColor": "#4c4c4c"
+            "roofColor": "#828282"
           },
           "geometry": {
             "type": "Polygon",

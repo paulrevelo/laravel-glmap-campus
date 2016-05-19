@@ -42,11 +42,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 
   <div id="login-box">
-    <a href="{{url('/auth/login')}}">Login</a>
+    <!-- <a href="{{url('/auth/login')}}">Login</a> -->
+    <div class="alert alert-block alert-success"></div>
   </div>
-  <div id="info-box">
-    <span id="preview-name">
-    </span>
+
+  <div id="search-box">
+    <input id="demo4" type="text" class="col-md-12 form-control" placeholder="Search building" autocomplete="off" />
+  </div>
+
+  <div id="name-box">
+    <span id="preview-name"></span>
   </div>
 
   <!-- Modal -->
@@ -266,6 +271,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
   </script> 
+
+  <script>
+    $(function() {
+      function displayResult(item) {
+        $('.alert').show().html('You selected <strong>' + item.value + '</strong>: <strong>' + item.text + '</strong>');
+      }
+      $('#demo4').typeahead({
+        ajax: '/buildingdata',
+        onSelect: displayResult
+      });
+    });
+  </script>
 
 </body>
 </html>
