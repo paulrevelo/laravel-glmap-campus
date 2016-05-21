@@ -42,15 +42,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 
   <div id="login-box">
-    <!-- <a href="{{url('/auth/login')}}">Login</a> -->
-    <div class="alert alert-block alert-success"></div>
+    <a href="{{url('/auth/login')}}">Login</a>
+    <!-- <div class="alert alert-block alert-success"></div> -->
   </div>
 
   <div id="search-box">
     <input id="demo4" type="text" class="col-md-12 form-control" placeholder="Search building" autocomplete="off" />
   </div>
 
-  <div id="name-box">
+  <div id="name-box" hidden>
     <span id="preview-name"></span>
   </div>
 
@@ -195,9 +195,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           document.body.style.cursor = 'pointer';
           osmb.highlight(id, '#f08000');
           getName(id);
+          $('#name-box').show();
+          $('#name-box').css({'top':e.y,'left':e.x}).fadeIn('slow');
         } else {
           document.body.style.cursor = 'default';
           osmb.highlight(null);
+          $('#name-box').hide();
         }
       });
     });
@@ -219,6 +222,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       url: '/buildingdata/'+id,
       success: function(buildingData){
         $('#preview-name').html(buildingData.name);
+        // $('.alert').show().html(buildingData.name);
+
       }
       });
     }
@@ -276,6 +281,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $(function() {
       function displayResult(item) {
         $('.alert').show().html('You selected <strong>' + item.value + '</strong>: <strong>' + item.text + '</strong>');
+        $('#myModal').modal('show');
+        getBuilding(item.value);
       }
       $('#demo4').typeahead({
         ajax: '/buildingdata',
